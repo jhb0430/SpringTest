@@ -74,7 +74,7 @@ List <Map<String,Object>>filmList = new ArrayList();
 	
 	@RequestMapping("/2")
 	public List objectResponse() {
-		List intoduceList = new ArrayList();
+		List <Introduce>intoduceList = new ArrayList();
 		Introduce userIntro = new Introduce("안녕하세요 가입인사 드립니다","hagulu","안녕하세요. 가입했어요. 앞으로 잘 부탁 드립니다. 활동 열심히 하겠습니다");
 		intoduceList.add(userIntro);
 
