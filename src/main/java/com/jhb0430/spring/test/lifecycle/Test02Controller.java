@@ -19,7 +19,7 @@ public class Test02Controller {
 	//1. json 출력 (List, Map)
 	
 	@RequestMapping("/1")
-	public List<Map<String,Object>> List(){
+	public List<Map<String,Object>> filmList(){
 		
 		
 List <Map<String,Object>>filmList = new ArrayList();
@@ -73,11 +73,14 @@ List <Map<String,Object>>filmList = new ArrayList();
 	//2. json 출력 (List, Class)
 	
 	@RequestMapping("/2")
-	public List objectResponse() {
-		List <Introduce>intoduceList = new ArrayList();
+	public List <Introduce> intoduceList() {
+		List <Introduce> intoduceList = new ArrayList();
 		Introduce userIntro = new Introduce("안녕하세요 가입인사 드립니다","hagulu","안녕하세요. 가입했어요. 앞으로 잘 부탁 드립니다. 활동 열심히 하겠습니다");
 		intoduceList.add(userIntro);
+//		intoduceList.add(new Introduce("안녕하세요 가입인사 드립니다","hagulu","안녕하세요. 가입했어요. 앞으로 잘 부탁 드립니다. 활동 열심히 하겠습니다"));
 
+		
+		
 		userIntro = new Introduce("헐 대박", "bada", "오늘 목요일이 었어 ... 금요일인줄");
 		intoduceList.add(userIntro);
 		

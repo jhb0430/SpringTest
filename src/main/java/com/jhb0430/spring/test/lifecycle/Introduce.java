@@ -24,5 +24,11 @@ public class Introduce {
 	public String getContent() {
 		return content;
 	}
+	
+	// getter setter 쉽게 만드는 방법
+//	source -> generate getters and setters
+	
+	
+	
 }
 
