@@ -26,6 +26,67 @@
   
   
   </select>
+  
+  <!-- 
+  월세(rentPrice) 를 parameter 로 받고 해당하는 월세보다 낮은 매물을
+  WHERE
+  	`rentPrice` < #{rentPrice}; 
+   -->
+ <select id="selectRentPrice"
+ resultType="com.jhb0430.spring.test.mybatis.domain.RealEstate"
+ parameterType="int" >
+  
+  SELECT
+  		`id`
+  		,`realtorId`
+  		,`address`
+  		,`area`
+  		,`type`
+  		,`price`
+  		,`rentPrice`
+  		,`createdAt`
+  		,`updatedAt`
+  FROM 
+  		`real_estate`
+ WHERE
+  	`rentPrice`<![CDATA[<]]> #{rentPrice}; 
+  	<!-- 
+  		1. <![CDATA[ "부등호"]]> : <![CDATA[  ]]>의 [] 안에 원하는 연산자를 입력하면 된다.
+  		2.
+  		기호			대체식		예제
+		<				lt		salary &lt; 10000
+		>				gt		salary &gt; 10000
+  	-->
+  
+  </select>
+  <!-- 3. 복합조건 셀렉트 -->
+ <select id="selectPriceArea"
+ resultType="com.jhb0430.spring.test.mybatis.domain.RealEstate"
+ parameterType="int" >
+  
+  SELECT
+  		`id`
+  		,`realtorId`
+  		,`address`
+  		,`area`
+  		,`type`
+  		,`price`
+  		,`rentPrice`
+  		,`createdAt`
+  		,`updatedAt`
+  FROM 
+  		`real_estate`
+  WHERE
+  		<!--넓이(area) - 매물의 넓이가 전달 받은 넓이 이상인 것
+  		 가격(price) - 매물의 매매금이 전달받은 매매금 보다 이하인 것
+  		  등록일을 기준으로 내림 차순으로 정렬하세요.
+  		  -->
+  		  `area` &gt; #{area}
+  		AND
+  			`price`&lt; #{price}
+  ORDER BY `createdAt` DESC;
+  
+  </select>
  
  
  </mapper>

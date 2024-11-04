@@ -11,5 +11,12 @@ public interface RealEstateRepository {
 	public RealEstate selectRealEstate(@Param("id")int id);
 		// 조회해야되니까 xml 가자 
 	
-	// 다시 서비스 
+	// 다시 서비스
+	
+	
+	public RealEstate selectRentPrice(@Param("rentPrice")int rentPrice);
+	
+	
+	public RealEstate selectPriceArea(@Param("area")int area,@Param("price")int price);
+	
 }

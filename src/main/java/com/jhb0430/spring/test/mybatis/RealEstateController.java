@@ -33,13 +33,42 @@ public class RealEstateController {
 		
 		return realEstate;
 		
+	}
 		
 		// 여기까지가 기본.... 
+		// @RequestParam("변수") 변수 변수이름 적어주기
 		
+//		2. 월세 조건 select
+//		월세(rentPrice) 를 parameter 로 받고 해당하는 월세보다 낮은 매물을 아래와 같이 json 으로 출력하세요.
 		
+		@ResponseBody
+		@RequestMapping("/mybatis/real-estate/select/2")
+		public RealEstate selectRentPrice(@RequestParam("rentPrice") int rentPrice) {
+			// 일단 서비스로 가볼까 ??
+			
+			RealEstate estaterentPrice = realEstateService.getRentPrice(rentPrice);
+			
+			return estaterentPrice;
+			
 		
 	}
 	
+//		3. 복합조건 select
+//		아래 두 parameter를 받고 매매 매물 중 조건에 모두 부합하는 매물 정보를 아래와 같이 json으로 출력하세요.
+//		넓이(area) - 매물의 넓이가 전달 받은 넓이 이상인 것
+//		가격(price) - 매물의 매매금이 전달받은 매매금 보다 이하인 것
+//		등록일을 기준으로 내림 차순으로 정렬하세요.
+//		요청 URL 예시
+//
+//		http://localhost:8080/mybatis/real-estate/select/3?area=90&price=130000
+		@ResponseBody
+		@RequestMapping("/mybatis/real-estate/select/3")
+		public RealEstate selectPriceArea(@RequestParam("area")int area, @RequestParam("price")int price) {
+			
+			RealEstate esatatePriceArea = realEstateService.getEstatePriceArea(area, price);
+			
+			return esatatePriceArea;
+		}
 	
 	
 }

@@ -29,5 +29,19 @@ public class RealEstateService {
 	}
 
 
+	public RealEstate getRentPrice(int rentPrice) {
+		
+		RealEstate estaterentPrice = realEstateRepository.selectRentPrice(rentPrice);
+		
+		return estaterentPrice;
+	}
+	
+	public RealEstate getEstatePriceArea(int area, int price) {
+		
+	RealEstate estatePriceArea = realEstateRepository.selectPriceArea(area, price);
+	
+		return estatePriceArea;
+	}
+	
 
 }
