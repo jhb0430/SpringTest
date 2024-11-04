@@ -22,3 +22,42 @@
 	</select>
 
 </mapper>
+
+
+<!-- 
+
+xml의 규칙 중 하나,  xml의 태그 규격을 dtd라는 파일을 통해 설정해줄 수 있다.
+dtd라는 파일을 포함시켜주면 dtd를 통해 정해진 규격의 태그만 사용할 수 있도록 하고 그 규격에 맞지 않으면 에러가 표시되게 정의할 수 있다. 
+어떻게 포함시키느냐?
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+↓ Mapper의 생성 목적은 ? Repository에 정해놓은 요소를 구현하기 위함임
+
+Repository에 있는 요소들을 xml을 통해 구현할 것이기 때문에 , 서로를 연결시켜줘야하고 , 그걸 위한 설정이 Mapper라는 태그로 수행되는것이다.
+<mapper에 namespace라는 속성을 추가해서 "연결될 Repository의 이름을 적어주면 됨, 근데 얘는 자바파일이 아니기 때문에 모든 파일 경로를 포함해서 적어줘야한다"> 
+
+	Repository에 있는 메소드를 호출했을때 쿼리를 수행해서 결과를 리턴받아야하는데 , 그 과정을 여기서 구현해주는거임
+	메소드를 태그를 통해서 연결해준다!
+	수행할 쿼리에 맞춰서 태그를 지정해준다.
+	지금은 셀렉트를 수행할거니까
+	<select></select> 로 적어준다.
+ 	이때 <select id="어떤 메소드와 연결할지 명확히 해준다. 바로,  (Repository에 존재하는 )메소드의 이름"
+	메소드를 연결 -> 메소드에는 1.이름, 2.파라미터, 3. 리턴타입이 존재하는데 그걸 다 적어줘야한다.
+	지금은 파라미터가 없으니까 생략 가능,
+	리턴타입은 resultType=""로 적어준다.
+	리턴타입이 Entity 클래스(Domain)기 때문에 ,클래스의 경로로 적어준다.
+
+<select></select> 사이에 이제 SELECT * FROM `table`; 을 적어주면되는데 실무에서는 * 안쓰고 모든 요소를 다 적어준다.
+SELECT 
+	``
+	,``
+	,``
+FROM `table`;	
+	
+
+</mapper>
+
+
+
+ -->
