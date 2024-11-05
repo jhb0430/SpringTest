@@ -1,5 +1,7 @@
 package com.jhb0430.spring.test.mybatis.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,20 +30,47 @@ public class RealEstateService {
 	
 	}
 
+	
+	/* 여러 행 조회해야하니까 이제는 리턴타입을 리스트로 받아야한다!!!! */
 
-	public RealEstate getRentPrice(int rentPrice) {
+//	public RealEstate getRentPrice(int rentPrice) {
+		public List<RealEstate> getRentPrice(int rentPrice) {
 		
-		RealEstate estaterentPrice = realEstateRepository.selectRentPrice(rentPrice);
+//		RealEstate estaterentPrice = realEstateRepository.selectRentPrice(rentPrice);
+		List<RealEstate> estaterentPrice = realEstateRepository.selectRentPrice(rentPrice);
 		
 		return estaterentPrice;
 	}
 	
-	public RealEstate getEstatePriceArea(int area, int price) {
+	public List<RealEstate> getEstatePriceArea(int area, int price) {
 		
-	RealEstate estatePriceArea = realEstateRepository.selectPriceArea(area, price);
+		List<RealEstate> estatePriceArea = realEstateRepository.selectPriceArea(area, price);
 	
 		return estatePriceArea;
 	}
 	
-
+// =======================================
+	
+	// 전달 받은 정보 기반으로 매물 저장 
+	public int addRealEstate(
+			int realtorId
+			, String address
+			, int area
+			, String type
+			, int price
+			){
+		//repository에서 값 가져오기
+		
+		int count = realEstateRepository.insertRealEstate(realtorId, address, area, type, price);
+	
+		return count;
+	}
+	
+	public int addRealEstateByObject(RealEstate realEstate) {
+		
+		int count = realEstateRepository.insertRealEstateByObject(realEstate);
+	
+		return count;
+	}
+	
 }

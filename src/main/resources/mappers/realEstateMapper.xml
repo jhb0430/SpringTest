@@ -56,14 +56,20 @@
   		기호			대체식		예제
 		<				lt		salary &lt; 10000
 		>				gt		salary &gt; 10000
+  	
+  	<![CDTA[
+  		이 사이에 조건을 통째로 넣어도 된다
+  	]>
+  	
+  	
   	-->
   
   </select>
   <!-- 3. 복합조건 셀렉트 -->
  <select id="selectPriceArea"
  resultType="com.jhb0430.spring.test.mybatis.domain.RealEstate"
- parameterType="int" >
-  
+ parameterType="map" >
+  <!--  파라미터가 여러개면 타입은 map!  -->
   SELECT
   		`id`
   		,`realtorId`
@@ -81,12 +87,57 @@
   		 가격(price) - 매물의 매매금이 전달받은 매매금 보다 이하인 것
   		  등록일을 기준으로 내림 차순으로 정렬하세요.
   		  -->
-  		  `area` &gt; #{area}
+  		  <!-- `area` &gt; #{area}-->
+  			<!--`price`&lt; #{price}-->
+  		  <![CDATA[
+  		  `area` >= #{area}
   		AND
-  			`price`&lt; #{price}
+  			`price`<= #{price}
+  		  ]]>
   ORDER BY `createdAt` DESC;
   
   </select>
+  
+  <insert id="insertRealEstate" parameterType="map">
+  	INSERT INTO
+  		`real_estate`
+		(`realtorId`
+  		,`address`
+  		,`area`
+  		,`type`
+  		,`price`
+		) 
+		VALUE
+		(
+		#{realtorId}
+		,#{address}
+		,#{area}
+		,#{type}
+		,#{price}
+		
+		);	 
+  
+  </insert>
+  <insert id="insertRealEstateByObject" parameterType="com.jhb0430.spring.test.mybatis.domain.RealEstate">
+  	INSERT INTO
+  		`real_estate`
+		(`realtorId`
+  		,`address`
+  		,`area`
+  		,`type`
+  		,`price`
+		) 
+		VALUE
+		(
+		#{realtorId}
+		,#{address}
+		,#{area}
+		,#{type}
+		,#{price}
+		
+		);	 
+  
+  </insert>
  
  
  </mapper>

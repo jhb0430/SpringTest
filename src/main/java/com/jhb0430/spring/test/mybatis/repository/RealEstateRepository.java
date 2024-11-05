@@ -1,5 +1,7 @@
 package com.jhb0430.spring.test.mybatis.repository;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -14,9 +16,23 @@ public interface RealEstateRepository {
 	// 다시 서비스
 	
 	
-	public RealEstate selectRentPrice(@Param("rentPrice")int rentPrice);
+//	public RealEstate selectRentPrice(@Param("rentPrice")int rentPrice);
+	public List<RealEstate> selectRentPrice(@Param("rentPrice")int rentPrice);
 	
 	
-	public RealEstate selectPriceArea(@Param("area")int area,@Param("price")int price);
+	public List<RealEstate> selectPriceArea(@Param("area")int area,@Param("price")int price);
+	
+	
+	// 전달받은 정보를 기반으로 insert
+	public int insertRealEstate(
+			@Param("realtorId") int realtorId
+			,@Param("address") String address
+			,@Param("area") int area
+			,@Param("type") String type
+			,@Param("price") int price
+			);
+	
+	
+	public int insertRealEstateByObject(RealEstate realEstate);
 	
 }

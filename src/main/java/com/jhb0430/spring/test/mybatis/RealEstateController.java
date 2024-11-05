@@ -1,5 +1,7 @@
 package com.jhb0430.spring.test.mybatis;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +27,13 @@ public class RealEstateController {
 	@ResponseBody
 	@RequestMapping("/mybatis/real-estate/select/1")
 	public RealEstate selectEstate(@RequestParam("id") int id) {
-		
+//		public List<RealEstate> selectEstate(@RequestParam("id") int id) {
+/*	public realEstate(){
+ * 
+ * 		// id가 16인 부동산 정보 얻어오기 
+ * 		RealEstate realEstate = realEstateService.getRealEstate();
+ * 
+ * 		}*/
 		// 테이블 데릴러 가자 서비스로 
 		// →서비스에서 만든거 써줘야됨
 		
@@ -43,10 +51,12 @@ public class RealEstateController {
 		
 		@ResponseBody
 		@RequestMapping("/mybatis/real-estate/select/2")
-		public RealEstate selectRentPrice(@RequestParam("rentPrice") int rentPrice) {
+//		public RealEstate selectRentPrice(@RequestParam("rentPrice") int rentPrice) {
+		public List<RealEstate> selectRentPrice(@RequestParam("rentPrice") int rentPrice) {
 			// 일단 서비스로 가볼까 ??
 			
-			RealEstate estaterentPrice = realEstateService.getRentPrice(rentPrice);
+//			RealEstate estaterentPrice = realEstateService.getRentPrice(rentPrice);
+			List<RealEstate> estaterentPrice = realEstateService.getRentPrice(rentPrice);
 			
 			return estaterentPrice;
 			
@@ -63,12 +73,62 @@ public class RealEstateController {
 //		http://localhost:8080/mybatis/real-estate/select/3?area=90&price=130000
 		@ResponseBody
 		@RequestMapping("/mybatis/real-estate/select/3")
-		public RealEstate selectPriceArea(@RequestParam("area")int area, @RequestParam("price")int price) {
+		public List<RealEstate> selectPriceArea(@RequestParam("area")int area, @RequestParam("price")int price) {
 			
-			RealEstate esatatePriceArea = realEstateService.getEstatePriceArea(area, price);
+			List<RealEstate> esatatePriceArea = realEstateService.getEstatePriceArea(area, price);
 			
 			return esatatePriceArea;
 		}
+		
+		
+//	======================================================================================
+//		연습 문제 - INSERT 쿼리
+		
+//		realtorId : 3
+//		address : 푸르지용 리버 303동 1104호
+//		area : 89
+//		type : 매매
+//		price : 100000
+//		입력 성공 : 
+		
+		@ResponseBody
+		@RequestMapping("/mybatis/real-estate/insert/1")
+		public String createRealEstate() {
+//		1. 객체로 insert 하기
+			
+//			3,"푸르지용 리버 303동 1104호",89,"매매",100000
 	
+			RealEstate realEstate = new RealEstate();
+			realEstate.setRealtorId(3);
+			realEstate.setAddress("푸르지용 리버 303동 1104호");
+			realEstate.setArea(89);
+			realEstate.setType("매매");
+			realEstate.setPrice(100000);
+//			int count = realEstateService.addRealEstate(3,"푸르지용 리버 303동 1104호",89,"매매",100000);
+			
+			
+			return "입력 성공 : " + count;
+			
+		}
+		
+		//2. Parameter 로 insert 하기
+//		단, realtorId 는 parameter를 통해서 전달받아서 저장하세요.
+//	 
+		
+//		address : 썅떼빌리버 오피스텔 814호
+//		area : 45
+//		type : 월세
+//		price : 100000
+//		rentPrice : 120
+//		입력 성공 : 1
+//		("썅떼빌리버 오피스텔 814호", 45, "월세",100000,120)
+		
+		@ResponseBody
+		@RequestMapping("/mybatis/real-estate/insert/2")
+		public String createParaEstate() {
+			
+			return "반대로 했다고?";
+		}
+		
 	
 }
