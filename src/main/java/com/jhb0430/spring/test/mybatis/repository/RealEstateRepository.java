@@ -25,11 +25,12 @@ public interface RealEstateRepository {
 	
 	// 전달받은 정보를 기반으로 insert
 	public int insertRealEstate(
-			@Param("realtorId") int realtorId
-			,@Param("address") String address
+//			@Param("realtorId") int realtorId,
+			@Param("address") String address
 			,@Param("area") int area
 			,@Param("type") String type
 			,@Param("price") int price
+			,@Param("rentPrice") int rentPrice
 			);
 	
 	

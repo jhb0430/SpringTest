@@ -101,11 +101,13 @@
   <insert id="insertRealEstate" parameterType="map">
   	INSERT INTO
   		`real_estate`
-		(`realtorId`
+		(
+		`realtorId`
   		,`address`
   		,`area`
   		,`type`
   		,`price`
+  		,`rentPrice`
 		) 
 		VALUE
 		(
@@ -114,10 +116,14 @@
 		,#{area}
 		,#{type}
 		,#{price}
+		,#{rentPrice}
 		
 		);	 
   
   </insert>
+  
+  
+  
   <insert id="insertRealEstateByObject" parameterType="com.jhb0430.spring.test.mybatis.domain.RealEstate">
   	INSERT INTO
   		`real_estate`

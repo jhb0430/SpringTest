@@ -53,18 +53,21 @@ public class RealEstateService {
 	
 	// 전달 받은 정보 기반으로 매물 저장 
 	public int addRealEstate(
-			int realtorId
-			, String address
+//			int realtorId,
+			String address
 			, int area
 			, String type
 			, int price
+			, int rentPrice
 			){
 		//repository에서 값 가져오기
 		
-		int count = realEstateRepository.insertRealEstate(realtorId, address, area, type, price);
+		int count =realEstateRepository.insertRealEstate(address, area, type, price, price);
 	
 		return count;
 	}
+	
+	
 	
 	public int addRealEstateByObject(RealEstate realEstate) {
 		

@@ -2,6 +2,7 @@ package com.jhb0430.spring.test.mybatis;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -105,7 +106,7 @@ public class RealEstateController {
 			realEstate.setType("매매");
 			realEstate.setPrice(100000);
 //			int count = realEstateService.addRealEstate(3,"푸르지용 리버 303동 1104호",89,"매매",100000);
-			
+			int count = realEstateService.addRealEstateByObject(realEstate);
 			
 			return "입력 성공 : " + count;
 			
@@ -113,7 +114,7 @@ public class RealEstateController {
 		
 		//2. Parameter 로 insert 하기
 //		단, realtorId 는 parameter를 통해서 전달받아서 저장하세요.
-//	 
+//	   이게 뭔소리지??? 
 		
 //		address : 썅떼빌리버 오피스텔 814호
 //		area : 45
@@ -126,6 +127,7 @@ public class RealEstateController {
 		@ResponseBody
 		@RequestMapping("/mybatis/real-estate/insert/2")
 		public String createParaEstate() {
+//			@RequestParam("realtorId") int realtorId
 			
 			return "반대로 했다고?";
 		}
