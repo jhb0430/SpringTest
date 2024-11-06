@@ -2,7 +2,6 @@ package com.jhb0430.spring.test.mybatis;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -126,11 +125,30 @@ public class RealEstateController {
 		
 		@ResponseBody
 		@RequestMapping("/mybatis/real-estate/insert/2")
-		public String createParaEstate() {
+		public String createParaEstate( @RequestParam("realtorId") int realtorId ) {
 //			@RequestParam("realtorId") int realtorId
+//		("썅떼빌리버 오피스텔 814호", 45, "월세",100000,120)
+			int count = realEstateService.addRealEstate(realtorId,"썅떼빌리버 오피스텔 814호", 45, "월세",100000,120);
 			
-			return "반대로 했다고?";
+			return  "입력 성공 : " + count;
 		}
 		
 	
+/*
+ Update 쿼리
+1. update
+id가 22 인 행의 type 을 전세로 바꾸고 price 를 70000으로 변경하세요.
+수정 성공한 행의 수를 출력하세요.
+출력 예시
+
+수정 성공 : 1
+ */
+		
+		@RequestMapping("/mybatis/rea-estate/update")
+		@ResponseBody
+		public String updateRealEstate() {
+			return "";
+		}
+		
+		
 }

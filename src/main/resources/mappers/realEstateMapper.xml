@@ -145,5 +145,14 @@
   
   </insert>
  
+ <update id="changeRealEstate" parameterType="map">
+ 
+ UPDATE 
+ 		`real_estate`
+	SET 
+		`type` ='전세', `price` = 70000
+	WHERE 
+		`id` = 22; 
+ </update>
  
  </mapper>
