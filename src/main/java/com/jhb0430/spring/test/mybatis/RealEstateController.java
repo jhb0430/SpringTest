@@ -140,14 +140,39 @@ public class RealEstateController {
 id가 22 인 행의 type 을 전세로 바꾸고 price 를 70000으로 변경하세요.
 수정 성공한 행의 수를 출력하세요.
 출력 예시
-
 수정 성공 : 1
+
+
+아니 id가 22인 행이 없으니가 1이 안뜨지...
  */
 		
-		@RequestMapping("/mybatis/rea-estate/update")
+		@RequestMapping("/mybatis/real-estate/update")
 		@ResponseBody
 		public String updateRealEstate() {
-			return "";
+			int count = realEstateService.editRealEstate(20,"전세",70000);
+			return "수정 성공 : " + count;
+		}
+		
+/*	
+		Delete 쿼리
+		
+		1. delete
+		parameter로 받은 id의 행을 삭제하세요.
+		삭제 성공한 행의 수를 출력하세요.
+		요청 URL 예시
+
+		http://localhost:8080/mybatis/real-estate/delete?id=34
+		출력 예시
+
+		삭제 성공 : 1
+*/
+		@RequestMapping("/mybatis/real-estate/delete")
+		@ResponseBody
+		public String deleteRealEstate(@RequestParam("id") int id) {
+			
+			int count = realEstateService.deleteRealEstate(id);
+			
+			return "삭제 성공 " + count;
 		}
 		
 		

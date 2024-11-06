@@ -62,7 +62,7 @@ public class RealEstateService {
 			){
 		//repository에서 값 가져오기
 		
-		int count =realEstateRepository.insertRealEstate(realtorId,address, area, type, price, price);
+		int count =realEstateRepository.insertRealEstate(realtorId,address, area, type, price, rentPrice);
 	
 		return count;
 	}
@@ -77,10 +77,26 @@ public class RealEstateService {
 	}
 	
 	
-	public int editRealEstate() {
+	public int editRealEstate(
+				int id
+				, String type
+				, int price
+				 
+			) {
 		
-		int count = realEstateRepository.changeRealEstate(22);
+		int count = realEstateRepository.updateRealEstate(id, type, price);
+	
 		return count;
+	}
+	
+	public int deleteRealEstate(int id) {
+		int count = realEstateRepository.deleteRealEstateById(id);
+		
+		return count;
+		
+//		 카운트는 성공한 행의 수!! 를 출력하는게 
+//		지금 식의 의도이기 때문에 카운트로 리턴 받는 것 뿐임
+//		int count 는 공식이 아님을 유의하기 
 	}
 	
 }

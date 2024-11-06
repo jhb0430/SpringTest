@@ -24,6 +24,10 @@ public interface RealEstateRepository {
 	
 	
 	// 전달받은 정보를 기반으로 insert
+	public int insertRealEstateByObject(RealEstate realEstate);
+	
+	
+	//2. 파라미터로 받기
 	public int insertRealEstate(
 			@Param("realtorId") int realtorId,
 			@Param("address") String address
@@ -34,10 +38,17 @@ public interface RealEstateRepository {
 			);
 	
 	
-	public int insertRealEstateByObject(RealEstate realEstate);
 	
 	
-	public int changeRealEstate(@Param("id") int id);
+	public int updateRealEstate(
+			@Param("id") int id
+			,@Param("type") String type
+			,@Param("price") int price
+			);
+
+	public int deleteRealEstateById(
+			@Param("id") int id
+			);
 	
 	
 }
