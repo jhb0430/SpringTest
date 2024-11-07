@@ -25,17 +25,28 @@ public class SellerService {
 	}
 	
 	// 가장 최근에 추가된 seller 정보 출력하기 
+	
+	public Seller getSeller(Integer id) {
+		
+		Seller seller = sellerRepository.selectSeller(id);
+		
+		return seller;
+	}
+	/*
 	public Seller getSeller() {
 		
 		Seller seller = sellerRepository.selectSeller();
 		
 		return seller;
 	}
+	
+	
 	public Seller getIdSeller(int id) {
 		
-		Seller sellerId = sellerRepository.selectSeller();
+		Seller sellerId = sellerRepository.selectIdSeller(id);
 		
 		return sellerId;
 	}
+	 * */
 	
 }

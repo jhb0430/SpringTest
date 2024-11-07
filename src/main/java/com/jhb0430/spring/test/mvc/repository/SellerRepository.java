@@ -19,10 +19,12 @@ public interface SellerRepository {
 
 // 최근 들어간 애 뽑자~~
 
+	public Seller selectSeller(@Param("id") Integer id);
+	/*
 	public Seller selectSeller();
 	
 	public Seller selectIdSeller(@Param("id") int id);
-	
+	*/
 
 
 }

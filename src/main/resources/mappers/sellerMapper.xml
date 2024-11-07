@@ -23,6 +23,37 @@
  	</insert>
  
  	<select id="selectSeller" parameterType="com.jhb0430.spring.test.mvc.domain.Seller">
+ 		<choose>
+	 		<when test ="id != null">
+	 		SELECT 
+	 			`nickname`
+	 			,`temperature`
+	 			,`profileImage`
+	 		FROM
+	 			`seller`
+		
+	 		WHERE `id`= #{id};
+	 		
+	 		</when>
+	 		
+	 		<otherwise>
+	 		SELECT 
+	 			`nickname`
+	 			,`temperature`
+	 			,`profileImage`
+	 		FROM
+	 			`seller`
+	 			ORDER BY `id` DESC
+	 			LIMIT
+	 			 1;
+	 		</otherwise>
+ 		</choose>
+ 	
+ 	</select>
+ 	
+ 	
+ <!-- 
+ 	<select id="selectSeller" parameterType="com.jhb0430.spring.test.mvc.domain.Seller">
  	
  		SELECT 
  			`nickname`
@@ -48,7 +79,9 @@
  		WHERE `id`= #{id};
  	
  	</select>
+  -->
  
+ <!--  id값이 있으면 ~ // 없으면~  -->
  	
  
  </mapper>
