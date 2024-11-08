@@ -105,12 +105,13 @@ public class SellerController {
 /*
  * 	=========		풀이		============
  * 
+ *  	Seller seller = null;
  *  	if(id == null){
- *  	Seller seller = sellerService.getSeller();
+ *  	seller = sellerService.getSeller();
  *  
  *  	model.addAttribute("seller",seller);
  *  	}else {
- *  	Seller seller = sellerService.getSeller(id);
+ *  	seller = sellerService.getSeller(id);
  *  	model.addAttribute("seller",seller);
  *  }
  * 
