@@ -14,16 +14,16 @@ header{
 	height:800px;
 	width:1200px;
 }
-.main > .menu {
-	width:300px;
+.main-menu {
 	height: 700px;
+	width:200px;
+}
+
+.logo {
+	width:200px;
+	height:100px;
 }
 
 footer{
-
-	height:90px;
-}
-footer > .logo {
-	width:100px;
-	height:90px;
+ height: 100px;
 }
