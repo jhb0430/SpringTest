@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+ 
+ <mapper namespace="com.jhb0430.spring.test.thymeleaf.weather.WeatherRepository">
+ 
+ 
+ 	<select id="selectWeather" resultType="com.jhb0430.spring.test.thymeleaf.weather.Weatherhistory">
+ 	
+ 		SELECT 
+ 			`date`
+ 			,`weather`
+ 			,`temperatures`
+ 			,`precipitation`
+ 			,`microDust`
+ 			,`windSpeed`
+		FROM
+		  `weatherhistory`; 			
+ 	
+ 	</select>
+ 
+ <!--  나중에 저장하는것도 만들러 와... -->
+ 
+ </mapper>

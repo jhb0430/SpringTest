@@ -2,47 +2,117 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Insert Title Here</title>
+<title>날씨 입력</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+<link rel="stylesheet" href="/weather/style.css">
 </head>
 <body>
-		<div>
-			<h2>날씨입력</h2>
-			<div>
-				<label>날짜</label><input type="text" class="form-control col-3">
-				<label>날씨</label>
-					<select class="form-control col-3">
-						<option></option>
-					</select>
-				<label>미세먼지</label>
-					<select class="form-control col-3">
-						<option></option>
-					</select>
-					
-				<label>기온</label>
-				<div class="input-group">
-					<input type="text" class="form-control col-3">
-					<span class="input-group-text">℃</span>
-				</div>
-				
-				<label>강수량</label>
-				<div class="input-group">
-					<input type="text" class="form-control col-3">
-					<span class="input-group-text">mm</span>
-				</div>
-				
-				<label>풍속</label>
-				<div class="input-group">
-					<input type="text" class="form-control col-3">
-					<span class="input-group-text">km/h</span>
-				</div>
-			</div>
-			<button type="button" class="btn btn-success"></button>
+
+<div id="wrap">
+	<!-- 
+		<header class="bg-success">헤더</header>
+	 -->
 		
-		</div>
+		<section class="main-contents">
+			<div class="d-flex">
+				 <nav class="main-menu p-2">
+						<div class="logo d-flex justify-content-center">
+							<img width="150px" src="https://www.kma.go.kr/kma/resources/images/sub/sig5.png">
+						</div>
+	                    <ul class="nav flex-column">
+	                        <li class="nav-item menu-item"><a href="#" class="nav-link text-white font-weight-bold">날씨</a></li>
+	                        <li class="nav-item menu-item"><a href="#" class="nav-link text-white font-weight-bold">날씨입력</a></li>
+	                        <li class="nav-item menu-item"><a href="#" class="nav-link text-white font-weight-bold">테마날씨</a></li>
+	                        <li class="nav-item menu-item"><a href="#" class="nav-link text-white font-weight-bold">관측기후</a></li>
+	                    </ul>
+		         </nav>
+		         
+	<article class="contents p-4">
+			<h1>날씨입력</h1>
+			
+			<div class="mt-5">
+			<div class="d-flex">
+				<div class="d-flex">
+					<label class="input-label">날짜</label>
+					<input type="text" class="form-control" id="dateInput" name="date">
+				</div>
+				<div class="d-flex">
+					<label class="input-label">날씨</label>
+						<select class="form-control" name="weather">
+							<option selected>맑음</option>
+							<option>구름조금</option>
+							<option>흐림</option>
+							<option>비</option>
+						</select>
+				</div>
+				<div class="d-flex">
+					<label class="input-label">미세먼지</label>
+						<select class="form-control" name="‎microDust">
+							<option>좋음</option>
+							<option selected>보통</option>
+							<option>나쁨</option>
+							<option>최악</option>
+						</select>
+				</div>
+				
+		</div>		
+		<div class="d-flex mt-5">
+			
+				<div class="d-flex">
+				<label class="input-label">기온</label>
+					 <div class="input-group-append">
+						<input type="text" class="form-control">
+						<span class="input-group-text">℃</span>
+					</div>
+				</div>	
+				<div class="d-flex">
+					<label class="input-label">강수량</label>
+					 <div class="input-group-append">
+						<input type="text" class="form-control">
+						<span class="input-group-text">mm</span>
+					</div>
+				</div>
+				
+				<div class="d-flex">
+					<label class="input-label">풍속</label>
+					 <div class="input-group-append">
+						<input type="text" class="form-control" name="windSpeed">
+						<span class="input-group-text">km/h</span>
+					</div>
+				</div>
+				
+			</div>
+	</div>		
+		
+			
+			<div class="d-flex justify-content-end mt-3">
+				<button type="button" class="btn btn-success">저장</button>
+			</div>
+		
+
+	
+			
+	</article>
 
 
-
+	
+		</section>
+		
+		
+		
+		<footer class="d-flex p-3">
+		
+			<div class="logo">
+							<img width="150px" src="https://www.kma.go.kr/kma/resources/images/sub/sig5.png">
+			</div>
+			<div class="ml-3">
+				<div>(07062) 서울시 동작구 여의대방로 16길 61</div>
+				<div>Copyright@2020 KMA. All Rights RESERVED</div>
+			</div>
+		</footer>
+	
+	
+</div>
 
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
