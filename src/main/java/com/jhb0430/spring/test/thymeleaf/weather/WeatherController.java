@@ -31,13 +31,51 @@ public class WeatherController {
 	}
 	
 	
+	
+	// 크리에이트
+
+	@PostMapping("/create")
+	public String createWeather(
+			@RequestParam("date") LocalDate date
+			,@RequestParam("weather") String weather
+			,@RequestParam("temperatures") double temperatures
+			,@RequestParam("precipitation") double precipitation
+			,@RequestParam("microDust") String microDust
+			,@RequestParam("windSpeed") double windSpeed
+			,Model model){
+		
+		Weatherhistory weatherhistory = new Weatherhistory(); 
+		
+				weatherhistory.setDate(date);
+				weatherhistory.setWeather(weather);
+				weatherhistory.setTemperatures(temperatures);
+				weatherhistory.setPrecipitation(precipitation);
+				weatherhistory.setMicroDust(microDust);
+				weatherhistory.setWindSpeed(windSpeed);
+	
+		
+				int count = weatherService.addWeatherbyObject(weatherhistory);
+				
+				
+				model.addAttribute("weatherhistory", weatherhistory);
+				
+//		return "입력 성공 : " + count;
+				
+				return "redirect:/thymeleat/test04";
+	}
+	
+	
+	
+	
 	@GetMapping("/test04-input")
 	public String input() {
 		
 		return "thymeleaf/test04-input";
 	}
 			
-			
+	
+	
+	/*
 	@PostMapping("/create")
 	public String inputTest04(
 			@RequestParam("date") LocalDate date
@@ -59,6 +97,7 @@ public class WeatherController {
 		// 입력받고 -> 파라미터로 받아야함 
 		return "redirect:/thymeleaf/test04";
 	}
+	 * */
 	
 	
 	

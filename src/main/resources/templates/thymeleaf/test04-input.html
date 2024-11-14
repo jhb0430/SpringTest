@@ -12,7 +12,6 @@
 	<!-- 
 		<header class="bg-success">헤더</header>
 	 -->
-		
 		<section class="main-contents">
 			<div class="d-flex">
 				 <nav class="main-menu p-2">
@@ -30,6 +29,7 @@
 	<article class="contents p-4">
 			<h1>날씨입력</h1>
 			
+		<form method="post" action="/thymeleaf/create">
 			<div class="mt-5">
 			<div class="d-flex">
 				<div class="d-flex">
@@ -61,14 +61,14 @@
 				<div class="d-flex">
 				<label class="input-label">기온</label>
 					 <div class="input-group-append">
-						<input type="text" class="form-control">
+						<input type="text" class="form-control" name="temperatures">
 						<span class="input-group-text">℃</span>
 					</div>
 				</div>	
 				<div class="d-flex">
 					<label class="input-label">강수량</label>
 					 <div class="input-group-append">
-						<input type="text" class="form-control">
+						<input type="text" class="form-control" name="precipitation">
 						<span class="input-group-text">mm</span>
 					</div>
 				</div>
@@ -86,11 +86,11 @@
 		
 			
 			<div class="d-flex justify-content-end mt-3">
-				<button type="button" class="btn btn-success">저장</button>
+				<button type="submit" class="btn btn-success">저장</button>
 			</div>
 		
 
-	
+	</form>
 			
 	</article>
 
