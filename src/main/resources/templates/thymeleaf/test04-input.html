@@ -15,12 +15,12 @@
 		<section class="main-contents">
 			<div class="d-flex">
 				 <nav class="main-menu p-2">
-						<div class="logo d-flex justify-content-center">
-							<img width="150px" src="https://www.kma.go.kr/kma/resources/images/sub/sig5.png">
+						<div class="logo mt-3">
+							<img height="50" src="https://www.kma.go.kr/kma/resources/images/sub/sig5.png">
 						</div>
 	                    <ul class="nav flex-column">
-	                        <li class="nav-item menu-item"><a href="#" class="nav-link text-white font-weight-bold">날씨</a></li>
-	                        <li class="nav-item menu-item"><a href="#" class="nav-link text-white font-weight-bold">날씨입력</a></li>
+	                        <li class="nav-item menu-item"><a href="/thymeleaf/test04" class="nav-link text-white font-weight-bold">날씨</a></li>
+	                        <li class="nav-item menu-item"><a href="/thymeleaf/test04-input" class="nav-link text-white font-weight-bold">날씨입력</a></li>
 	                        <li class="nav-item menu-item"><a href="#" class="nav-link text-white font-weight-bold">테마날씨</a></li>
 	                        <li class="nav-item menu-item"><a href="#" class="nav-link text-white font-weight-bold">관측기후</a></li>
 	                    </ul>
@@ -29,7 +29,7 @@
 	<article class="contents p-4">
 			<h1>날씨입력</h1>
 			
-		<form method="post" action="/thymeleaf/create">
+		<form method="get" action="/thymeleaf/create">
 			<div class="mt-5">
 			<div class="d-flex">
 				<div class="d-flex">
@@ -39,19 +39,19 @@
 				<div class="d-flex">
 					<label class="input-label">날씨</label>
 						<select class="form-control" name="weather">
-							<option selected>맑음</option>
-							<option>구름조금</option>
-							<option>흐림</option>
-							<option>비</option>
+							<option selected value="맑음">맑음</option>
+							<option value="구름조금">구름조금</option>
+							<option value="흐림">흐림</option>
+							<option value="비">비</option>
 						</select>
 				</div>
 				<div class="d-flex">
 					<label class="input-label">미세먼지</label>
-						<select class="form-control" name="‎microDust">
-							<option>좋음</option>
-							<option selected>보통</option>
-							<option>나쁨</option>
-							<option>최악</option>
+						<select class="form-control" name="microDust">
+							<option value="좋음">좋음</option>
+							<option selected value="보통">보통</option>
+							<option value="나쁨">나쁨</option>
+							<option value="최악">최악</option>
 						</select>
 				</div>
 				

@@ -13,12 +13,6 @@ public interface WeatherRepository {
 	
 	
 	public int insertWeather(
-			/*`date`
- 			,`weather`
- 			,`temperatures`
- 			,`precipitation`
- 			,`microDust`
- 			,`windSpeed`*/
 			@Param("date") LocalDate date
 			,@Param("weather") String weather
 			,@Param("temperatures") double temperatures
@@ -28,7 +22,13 @@ public interface WeatherRepository {
 			);
 	
 	
+	
+	
 	public int insertWeatherByObject(Weatherhistory weatherhistory);
+	
+	
+	
+	
 	
 }
 

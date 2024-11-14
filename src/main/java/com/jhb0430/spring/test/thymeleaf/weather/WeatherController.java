@@ -4,12 +4,15 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @RequestMapping("/thymeleaf")
 
@@ -30,20 +33,61 @@ public class WeatherController {
 		return "thymeleaf/test04";
 	}
 	
-	
+/*	
 	
 	// 크리에이트
-
-	@PostMapping("/create")
-	public String createWeather(
+	@GetMapping("/create")
+	public String inputTest04(
 			@RequestParam("date") LocalDate date
 			,@RequestParam("weather") String weather
 			,@RequestParam("temperatures") double temperatures
 			,@RequestParam("precipitation") double precipitation
 			,@RequestParam("microDust") String microDust
 			,@RequestParam("windSpeed") double windSpeed
-			,Model model){
+			){
+
 		
+		int count = weatherService.addWeather(date, weather, temperatures, precipitation, microDust, windSpeed);
+
+		@ModelAttribute(Weatherhistory weatherhistory)
+		적은 경우 (위의 파라미터를 일일이 저장하기 귀찮으니까 한번에 받기 위함)
+
+		
+		int count = weatherService.addWeather(
+			weather.getDate()
+			,weather.getWeather()
+			,weather.getTemperatures()
+			,weather.getPreipitation()
+			,weather.getMicroDust()
+			,weather.getWindSpeed()
+			);
+			
+		
+	
+		
+		
+		// 입력받고 -> 파라미터로 받아야함 
+//		return "입력 성공 : " + count;
+	return "redirect:/thymeleaf/test04";
+	}
+*/	
+	
+	
+	
+	
+	@GetMapping("/create")
+//	@PostMapping("/create")
+	public String createWeather(
+			// 대상이 되는 파라미터 바로 위에 붙여줌
+			@DateTimeFormat(pattern="yyyy년 M월 d일")
+			@RequestParam("date") LocalDate date
+			,@RequestParam("weather") String weather
+			,@RequestParam("temperatures") double temperatures
+			,@RequestParam("precipitation") double precipitation
+			,@RequestParam("microDust") String microDust
+			,@RequestParam("windSpeed") double windSpeed
+//		@ModelAttribute(Weatherhistory weatherhistory)
+			,Model model){
 		Weatherhistory weatherhistory = new Weatherhistory(); 
 		
 				weatherhistory.setDate(date);
@@ -61,7 +105,7 @@ public class WeatherController {
 				
 //		return "입력 성공 : " + count;
 				
-				return "redirect:/thymeleat/test04";
+				return "redirect:/thymeleaf/test04";
 	}
 	
 	
@@ -75,29 +119,7 @@ public class WeatherController {
 			
 	
 	
-	/*
-	@PostMapping("/create")
-	public String inputTest04(
-			@RequestParam("date") LocalDate date
-			,@RequestParam("weather") String weather
-			,@RequestParam("temperatures") double temperatures
-			,@RequestParam("precipitation") double precipitation
-			,@RequestParam("microDust") String microDust
-			,@RequestParam("windSpeed") double windSpeed
-			,Model model){
-
-		
-		Weatherhistory weatherhistory = new Weatherhistory(); 
-		
-		int count = weatherService.addWeather(date, weather, temperatures, precipitation, microDust, windSpeed);
-		
-		model.addAttribute("weatherhistory",weatherhistory);
-		
-		
-		// 입력받고 -> 파라미터로 받아야함 
-		return "redirect:/thymeleaf/test04";
-	}
-	 * */
+	
 	
 	
 	
