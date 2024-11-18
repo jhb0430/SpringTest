@@ -5,9 +5,10 @@ import java.time.LocalDateTime;
 public class Favorite {
 
 	// id name url createdAt updatedAt
+	private int id;
 	private String name;
 	private String url;
-//	private LocalDateTime createdAt;
+	private LocalDateTime createdAt;
 	
 	
 	public String getName() {
@@ -21,6 +22,18 @@ public class Favorite {
 	}
 	public void setUrl(String url) {
 		this.url = url;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public LocalDateTime getCreatedAt() {
+		return createdAt;
+	}
+	public void setCreatedAt(LocalDateTime createdAt) {
+		this.createdAt = createdAt;
 	}
 
 	

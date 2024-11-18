@@ -8,17 +8,24 @@
 </head>
 <body>
 
-	<h1 class="mb-3">즐겨 찾기 추가하기</h1>
-	<div>
-		<label>제목</label>
-		<input type="text" class="form-control" id="nameInput">
-	</div>
-	<div class="mt-2">
-		<label>주소</label>
-		<input type="text" class="form-control" id="urlInput">
-	</div>
-	<div class="mt-2">
-		<button type="button" class="btn btn-success w-100 text-center" id="addBtn">추가</button>
+	<div class="col-11">
+		<h1 class="mb-3">즐겨 찾기 추가하기</h1>
+		<div>
+			<label>제목</label>
+			<input type="text" class="form-control col-12" id="nameInput">
+		</div>
+		<div class="mt-2">
+			<label>주소</label>
+			<div class="d-flex">
+			<input type="text" class="form-control col-10" id="urlInput">
+			<button type="button" class="btn btn-info ml-3" id="duplicateBtn">중복확인</button>
+			</div>
+			<div class="text-danger d-none" id="dupText">중복된 url 입니다.</div>
+			<div class="text-success d-none" id="NdupText">저장 가능한 url 입니다.</div>
+		</div>
+		<div class="mt-2">
+			<button type="button" class="btn btn-success w-100 text-center" id="addBtn">추가</button>
+		</div>
 	</div>
 
 
@@ -26,6 +33,44 @@
 <script>
 
  $(document).ready(function(){
+	 
+	 $("#duplicateBtn").on("click",function(){
+		 
+		 let url = $("#urlInput").val();
+		 
+		 if(url == ""){
+			 alert("주소를 입력하세요!!");
+			 return;
+		}
+			 
+	
+		$.ajax({
+			// 타입 주소 데이터 success
+			type:"get"
+			,url:"/ajax/favorite/duplicate-url"
+			,data:{"url":url}
+			,success:function(response){
+				if(response.isDuplicate){
+					//alert("wndqhr")...?? 가 아니라 밑에 글자 띄우는건가 
+							//alert("중복입니다");
+					 $("#dupText").removeClass("d-none");
+					 $("#NdupText").addClass("d-none");
+				} else {
+							//alert("저장 가능합니다");
+					 $("#NdupText").removeClass("d-none");
+					 $("#dupText").addClass("d-none");
+				}
+			}
+			, error: function(){
+				alert("중복 에러!")
+			}
+			
+		})	 
+		 
+	 });
+	 
+	 
+	 
 	 
 	 $("#addBtn").on("click",function(){
 		 
@@ -44,10 +89,12 @@
 			 return;
 		 }
 		if(!(url.startsWith("http://") ||url.startsWith("https://")) ){
-			alert("http포함");
+			alert("http(s)포함가 포함된 주소를 적어주세요");
 			return;
 		}
 		 /*
+
+		 
 		if(!url.startsWith("http://") ||!url.startsWith("https://") ){
 			url이 http://로 시작하지 않	거나	 https:// 로 시작하지 않으면....
 			???????
@@ -76,6 +123,8 @@
 			 ,success:function(response){
 				 
 				 if(response.result == "success"){
+					 // list 페이지로 이동
+					// location.href=""
 					 alert("저장 성공");
 					 return;
 				 } else {
@@ -85,7 +134,19 @@
 			 } ,error: function(){	// success의 조건 끝나면 else처럼 에러조건이 붙는듯.... 
 				alert("에러")	 
 			 }
-			 
+ /* input.html에서 성공 실패 옵션 준다라고 하는 것은 혹시 success와 error일까요?
+여기서 error 은 api 요청과정 혹은 수행과정에서 에러가 발생되어서 정상적으로 rseponse가 전달이 안된 상황이에요
+말그대로 에러인거죠.
+
+success의 function에서 조건으로 구분하는 성공 실패여부는 api에서 전달해준 json을 분석해서 성공 실패를 구분하는 과정이고요.
+
+api에서 수행된 기능인데, api에서 정확한 성공 실패여부를 알 수 있겠쬬?
+그래서 api에서 전달해주는 response의 데이터에 의존하게 되고요.
+
+
+error는 완전 다른 문제가 생긴 것이고요.
+
+api와 ajax의 흐름을 명확하게 둘러 나누어서 독립적으로 생각하는게 매우 중요해요.*/
 			 
 		 });
 		 
