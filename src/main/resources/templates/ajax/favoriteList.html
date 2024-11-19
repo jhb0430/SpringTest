@@ -23,7 +23,7 @@
 					<td th:text="${status.count}">1</td>
 					<td th:text="${favorite.name}">사이트1</td>
 					<td th:text="${favorite.url}">어쩌구.com</td>
-					<td><button class="btn btn-danger text-white" id="deleteBtn">삭제</button></td>
+					<td><button type="button" class="btn btn-danger text-white" id="deleteBtn" th:value="${favorite.id}" >삭제</button></td>
 					<!-- "${favorite.id}" 써줘야하는거 아닌가 속성에다가 값을 --> 
 				</tr>
 			</tbody>
@@ -42,6 +42,11 @@
 	 $("#deleteBtn").on("click",function(){
 		 
 		 let id = $("#deleteBtn").val();
+		 
+		 if(id == ""){
+			 alert("id를 가져오지 못했음");
+			 return;
+		}
 		 
 		 $.ajax({
 			 type:"get"
