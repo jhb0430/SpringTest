@@ -1,0 +1,44 @@
+@charset "UTF-8";
+
+#wrap{
+    width: 1200px;
+    /* height: 900px; */
+    margin: 0, auto;
+}
+
+header{
+    height: 100px;
+}
+
+.menu {
+    height: 40px;
+    background-color: #CD853E;
+}
+.nav-item >:hover {
+    background-color: green;
+}
+.contents {
+    width: 1200px;
+    /* height: 700px; */
+}
+.contentes > .banner {
+    width: 1200px;
+    height: 500px;
+}
+.contents > .info-reserv {
+    height: 300px;
+}
+
+.box {
+    height: 300px;
+    background-color: #A1522C;
+}
+.boxInfo {
+    height: 300px;
+    background-color: #D16A1E;
+}
+
+
+footer {
+    height: 100px;
+}

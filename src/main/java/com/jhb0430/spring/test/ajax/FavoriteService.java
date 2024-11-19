@@ -49,8 +49,16 @@ public class FavoriteService {
 			return false;
 		}
 		
+		// return count > 0;
 		
 	}
+	
+	// 특정 즐겨찾기 삭제
+	// input : 삭제 대상 id
+	// 기능 : id 와 대응되는 즐겨 찾기 삭제
+	// output : 
+	
+	
 	
 	
 	public int deleteFavorite(int id) {

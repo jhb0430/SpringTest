@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>예약 목록 페이지</title>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+<link rel="stylesheet" href="/booking/style.css">
+</head>
+<body>
+
+ <div id="wrap">
+
+            <header class="d-flex justify-content-center align-items-center">
+                <!-- <div class="col-4"> -->
+                    <div class="display-4 text-center">통나무 팬션</h1>
+                <!-- </div> -->
+            </header>
+
+            <nav class="menu nav-fill">
+                <ul class="nav font-weight-bold">            <!--메뉴 4개-->
+                    <li class="nav-item"><a class="nav-link text-white" href="#">펜션소개</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="#">객실보기</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="#">예약안내</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="#">커뮤니티</a></li>
+                </ul>
+
+            </nav>
+
+
+
+            <section class="contents"> <!--섹션 틀-->
+            
+            
+            
+              
+               
+   <!-- -->   
+	   <div class="text-center m-3">
+				<h2>예약 목록 보기</h2>
+	   </div>          
+			<table class="table text-center">
+				<thead>
+					<tr>
+						<th>이름</th>
+						<th>예약날짜</th>
+						<th>숙박일수</th>
+						<th>숙박인원</th>
+						<th>전화번호</th>
+						<th>예약상태</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="booking :${booking}">
+						<td th:text="${booking.name}">김아무개</td>
+						<td th:text="${#temporals.format(booking.date,'yyyy년 M월 d일')}">2032년 3월 1일</td>
+						<td th:text="${booking.day}">4일</td>
+						<td th:text="${booking.headcount}">7명</td>
+						<td th:text="${booking.phoneNumber}">010-111-3333</td>
+						<th:block th:switch="${booking.state}">
+						<!--  대기중이면 info 확정이면 success 그 외는 warning으로 가죠  -->
+							<td th:case="확정" class="text-success">확정</td>
+							<td th:case="대기중" class="text-info">대기중</td>
+							<td th:case="*" class="text-warning"></td>
+						</th:block>
+						<td><button type="button" class="btn btn-danger btn-sm deleteBtn" th:data-booking-id>삭제</button></td>
+					</tr>
+				</tbody>
+				
+			
+			</table>
+
+
+<!--   -->                 
+                    
+          
+            </section>
+
+            <footer class="bg-white">
+                <div class="text-secondary small mt-3">
+                    제주특별자치도 제주시 애월읍 <br>
+                    사업자등록번호 : 111-22-255222 / 농어촌민박사업자지정 / 대표:김머시기 <br>
+                    Copyright 2025 tongnamu All right reserved
+                </div>
+            </footer>
+        </div>
+
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script>
+
+ $(document).ready(function(){
+	 
+	 $(".deleteBtn").on("click",function(){
+		 // 삭제 버튼을 누르면 지워지는 기능
+
+		 // 유효성 검사
+		 //alert("클릭됨!");
+		 
+		 let id =  $(this).data("booking-id");
+		 
+		 $.ajax({
+			 type:get
+			,url:"/ajax/booking/delete"
+			,data:{"id":id}
+			,success:function(response){
+				if(response.result == "success"){
+				alert("삭제 성공")
+				} else {
+					alert("삭제 실패");
+				}
+			}
+			,error:function(){
+				alert("요청 처리 실패");
+			}
+			 
+		 })
+		 
+		 
+	 });
+	 
+	 
+ });
+
+
+
+
+</script>
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+</body>
+</html>

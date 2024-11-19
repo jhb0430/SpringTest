@@ -151,9 +151,17 @@ api와 ajax의 흐름을 명확하게 둘러 나누어서 독립적으로 생각
 	}
 	
 	
+	// 삭제
+	
 	@ResponseBody
 	@GetMapping("/delete-url")
-	public Map<String, String> deleteFavorite(@RequestParam("id") int id) {
+	public Map<String, String> deleteFavorite(@RequestParam("id") int id 
+//			, Model model
+			) {
+		
+//		List<Favorite> favorite = favoriteService.getFavorite();
+//		
+//		model.addAttribute("favorite",favorite);
 		
 		int count = favoriteService.deleteFavorite(id);
 		

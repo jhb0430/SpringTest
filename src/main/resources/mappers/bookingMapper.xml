@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.jhb0430.spring.test.ajax.booking.BookingRepository">
+ 
+ <select id="selectBooking" parameterType="com.jhb0430.spring.test.ajax.booking.Booking">
+ 	SELECT
+ 		`id`
+ 		,`name`
+ 		,`headcount`
+	 	,`day`
+	 	,`date`
+	 	,`phoneNumber`
+	 	,`state`
+	 FROM
+	 	`booking`;	
+ 
+ 
+ </select>
+ 
+ <delete id="deleteBooking" parameterType="int">
+ DELETE FROM 
+			`booking`
+		WHERE 
+			`id` = #{id};
+	
+ 
+ 
+ 
+ </delete>
+ 
+ 
+ 
+ <insert id="insertBooking" parameterType="map">
+ 
+	INSERT INTO
+			`booking`
+		(
+	 		,`name`
+		 	,`date`
+		 	,`day`
+	 		,`headcount`
+		 	,`phoneNumber`
+		)
+	VALUE
+		(
+		#{name}
+		,#{date}
+		,#{day}
+		,#{headcount}
+		,#{phoneNumber}
+		);	 
+ 
+ </insert>
+ 
+ 
+ 
+ 
+ 
+ </mapper>

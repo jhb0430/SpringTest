@@ -11,13 +11,15 @@
  
  
  	SELECT 
- 		`name`
+ 		`id`
+ 		,`name`
  		,`url`
  		,`createdAt`
  		,`updatedAt`
  	FROM
  		`favorite`
- 	ORDER BY `id` DESC;	
+ 	ORDER BY 
+ 		`id` DESC;	
  
  </select>
  

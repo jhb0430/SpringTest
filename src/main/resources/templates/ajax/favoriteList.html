@@ -22,9 +22,9 @@
 				<tr th:each="favorite, status:${favorite}">
 					<td th:text="${status.count}">1</td>
 					<td th:text="${favorite.name}">사이트1</td>
-					<td th:text="${favorite.url}">어쩌구.com</td>
-					<td><button type="button" class="btn btn-danger text-white" id="deleteBtn" th:value="${favorite.id}" >삭제</button></td>
-					<!-- "${favorite.id}" 써줘야하는거 아닌가 속성에다가 값을 --> 
+					<td th:text="${favorite.url}">어쩌구.com</td>											<!-- th:value  -->
+					<td><button type="button" class="btn btn-danger btn-sm text-white deleteBtn" th:data-favorite-id="${favorite.id}" >삭제</button></td>
+					<!-- "${favorite.id}" 써줘야하는거 아닌가 속성에다가 값을 --> <!--  클래스는 id와 달리 여러번 사용할 수 있다 -->
 				</tr>
 			</tbody>
 		</table>
@@ -39,10 +39,19 @@
  $(document).ready(function(){
 	 //해당 버튼을 눌럿을때 ajax를 통해서 해당 행을 DB에서 삭제하고, 
 	 //성공 후에 화면을 새로고침 하세요.
-	 $("#deleteBtn").on("click",function(){
+	 $(".deleteBtn").on("click",function(){
 		 
-		 let id = $("#deleteBtn").val();
+		 // 특정 즐겨찾기 삭제
+		 // input : 삭제 대상 id
+		 // 기능 : 대상이 되는 즐겨 찾기 삭제 (API 활용) 왜 : 서버에 있는 실제 정보를 삭제해야 하니까 .
+		 // output : 새로고침
 		 
+		 // 이벤트가 발생한 함수를 this를 통해 손쉼게 얻어올 수 있다.
+//		let id =  $(this).val();	// th:value
+		let id =  $(this).data("favorite-id"); // data-favorite-id
+		 
+//		 let id = $(".deleteBtn").val();
+		 // 							바보아냐?? 셀렉트에서 id 안가져와서 조회가 안되는거였음 ㅋㅋ..ㅋ...ㅋ....
 		 if(id == ""){
 			 alert("id를 가져오지 못했음");
 			 return;
@@ -53,8 +62,11 @@
 			 ,url:"/ajax/favorite/delete-url"
 			 ,data:{"id":id}
 		 	 ,success:function(response){
-		 		 if(response.deleteFavorite){
-		 			 alert("삭제 성공!")
+	//	 		 if(response.deleteFavorite == "success"){
+		 		 if(response.result == "success"){
+	//	 			 alert("삭제 성공!")
+		 			 // 성공 후에 화면을 새로고침 하세요
+		 			 location.reload();
 		 		 }else {
 		 			 alert("삭제 실패");
 		 		 }
