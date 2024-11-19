@@ -1,6 +1,6 @@
 package com.jhb0430.spring.test.ajax.booking;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -53,7 +53,7 @@ public class BookingController {
 	public Map<String,String> createBooking(
 						@RequestParam("name") String name
 						,@DateTimeFormat(pattern="yyyy년 M월 d일") // 묶어주깅 
-						@RequestParam("date") LocalDateTime date
+						@RequestParam("date") LocalDate date
 						, @RequestParam("day") int day
 						, @RequestParam("headcount") int headcount
 						, @RequestParam("phoneNumber") String phoneNumber
@@ -81,7 +81,7 @@ public class BookingController {
 	
 	
 	@ResponseBody
-	@GetMapping("delete")
+	@GetMapping("/delete")
 	public Map<String, String> deleteBooking(@RequestParam("id") int id) {
 		
 		int count = bookingService.deleteBooking(id);
@@ -100,5 +100,37 @@ public class BookingController {
 		
 		return resultMap;
 	}
+	
+	@GetMapping("/home")
+	public String bookingHome() {
+		
+		return "ajax/booking/booking-home";
+	}
+	
+	// 이름 전화번호 조회해서 일치하는 거 -> 이거 ajax 중복 문제다 
+	/*
+	@ResponseBody
+	@GetMapping("/same-booking")
+	public Map<String, boolean> sameBooking (@RequestParam("name")String name
+											, @RequestParam("phoneNumber") String phoneNumber){
+		
+		boolean isSame = bookingService.sameBooking(name, phoneNumber);
+		
+		Map<String, boolean> resultMap = new HashMap<>();
+		
+		
+		// 일치하면 {"result": true}
+		resultMap.put("isSame",isSame); //로 간단하게 처리도 가능
+		
+		return resultMap;
+		 * 
+		
+		Map<String, boolean> resultMap = new HashMap<>();
+		
+		resultMap.put("issame",isSame);
+		
+		return resultMap;
+	}
+	 * */
 
 }

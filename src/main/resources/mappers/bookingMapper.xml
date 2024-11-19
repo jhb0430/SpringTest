@@ -54,6 +54,18 @@
  
  </insert>
  
+ <select id="sameBooking" parameterType="string" resultType="int">
+ 	SELECT
+ 			count(*)
+ 		FROM
+ 			`booking`
+ 		WHERE
+ 			`name` = #{name}
+ 		AND	
+ 			`phoneNumber` = #{phoneNumber};
+ 	
+ 
+ </select>
  
  
  

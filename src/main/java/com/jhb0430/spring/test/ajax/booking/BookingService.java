@@ -1,6 +1,6 @@
 package com.jhb0430.spring.test.ajax.booking;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +30,7 @@ public class BookingService {
 	
 	
 	public int addBooking(String name
-					, LocalDateTime date
+					, LocalDate date
 					,int day
 					, int headcount
 					,String phoneNumber
@@ -39,6 +39,20 @@ public class BookingService {
 		int count = bookingRepository.insertBooking(name, date, day, headcount, phoneNumber);
 		
 		return count;
+		
+	}
+	
+	// 이름 전화번호 일치
+	
+	public boolean sameBooking(String name ,String phoneNumber) {
+		
+		int count = bookingRepository.sameBooking(name, phoneNumber);
+		
+		if(count > 0 ) {
+			return true;
+		} else {
+			return false;
+		}
 		
 	}
 	

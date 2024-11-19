@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>통나무 펜션</title>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+<link rel="stylesheet" href="/booking/style.css">
+</head>
+<body>
+
+ <div id="wrap">
+
+            <header class="d-flex justify-content-center align-items-center">
+                <!-- <div class="col-4"> -->
+                    <div class="display-4 text-center">통나무 팬션</h1>
+                <!-- </div> -->
+            </header>
+
+            <nav class="menu nav-fill">
+                <ul class="nav font-weight-bold">            <!--메뉴 4개-->
+                    <li class="nav-item"><a class="nav-link text-white" href="#">펜션소개</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="#">객실보기</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="#">예약안내</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="#">커뮤니티</a></li>
+                </ul>
+
+            </nav>
+
+
+
+            <section class="contents"> <!--섹션 틀-->
+            
+               
+    <article class="banner d-flex justify-content-center align-items-center">                    
+					<div>
+                        <img src="/booking/banner1.jpg" id="banner">
+                    </div>
+                    <!-- <button type="button" id="nextBtn">다음</button> -->
+                </article>
+
+                <article class="info-reserv"> <!-- 하단 슬롯-->
+                    <div class="d-flex justify-content-center align-items-center text-white">  <!-- 하위요소의 글씨가 다 흰색이니까 가장 큰 틀에다 흰글씨 속성 주기-->
+            
+                        <div class="box col-4  d-flex align-items-center justify-content-center"> 
+                            <div class=" display-4">실시간 <br>
+                                예약하기</div>
+                        </div>
+                        <div class="boxInfo col-5" > <!-- 중간 틀-->
+                            <div class="pt-4 pl-2 pr-4"> <!--예약확인 마진/패딩 주려고 만들어둔 div-->
+
+                                <div class="d-flex align-items-end"> <!-- 예약확인 회원 비회원 한줄 만드는 div-->
+                                    <h3>예약확인 </h3>
+                                    <div > <!-- 여기서부터 수정!!!!!!!!!!!!!!!!!--> <!--class=" mx-3 d-flex align-items-center justify-content-between" ㅇㅎ.. 얘네 필요 없나봐-->
+                                        <label class="ml-4">회원 </label><input type="radio" name="member" value="memberBtn" id="memberBtn" checked>
+                                        <label class="ml-3">비 회원 </label><input type="radio" name="member" value="notMemberBtn" id="notMemberBtn">
+                                    </div>
+                                </div>
+                                
+                                                                            <!--hide 말고 d-none으로 줘보기 -->
+                                <div id="notMemberInput" class=" d-none"> <!-- 비회원일 시 -->
+                                    <div class="d-flex mt-2">
+                                        <label class="col-3 align-items-center text-right">이름 : </label><input type="text" name="ipt" class="form-control col-9" id="nameInput">
+                                    </div>
+                                    <div class="d-flex mt-4">
+                                        <label class="col-3 align-items-center text-right">전화번호 : </label><input type="text" name="ipt" class="form-control col-9" id="phoneInput">
+                                    </div>
+                                    <div class="d-flex mt-4">
+                                        <label class="col-3 align-items-center text-right">날짜 : </label><input type="text" name="ipt" class="form-control col-9" id="dateInput">
+                                    </div>
+                                </div>
+                                <div id="memberInput"> <!-- 회원일 시-->
+                                    <div class="d-flex mt-3">
+                                        <label class="col-3 align-items-center text-right">아이디 : </label><input type="text" name="ipt" class="form-control col-9" id="idInput">
+                                    </div>
+                                    <div class="d-flex  mt-4">
+                                        <label class="col-3 align-items-center text-right">비밀번호 : </label><input type="text" name="ipt"  class="form-control col-9" id="passwordInput">
+                                    </div>
+                                </div>
+
+                                <div class="d-flex justify-content-end mt-3"> <!--align-items-end 얘도 지웠음... 아 어려워!~!~!~! -->
+
+                                    <button type="button" class =" btn btn-outline-success btn-success text-white" id="checkBtn">조회 하기</button>
+                                </div>
+                            
+                            </div>
+                                
+                        </div>
+
+                        <div class="box  col-3 d-flex align-items-center justify-content-center">
+                            <div class="text-white">
+                                <h3> 예약 문의: <br></h3>
+                                <h1> 010- <br>
+                                    000-1111
+                                </h1>  
+                            </div>
+                        </div>
+                    </div>
+      </article>         
+                    
+          
+            </section>
+
+            <footer class="bg-white">
+                <div class="text-secondary small mt-3">
+                    제주특별자치도 제주시 애월읍 <br>
+                    사업자등록번호 : 111-22-255222 / 농어촌민박사업자지정 / 대표:김머시기 <br>
+                    Copyright 2025 tongnamu All right reserved
+                </div>
+            </footer>
+        </div>
+
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script>
+
+$(document).ready(function(){
+	
+	
+	
+	
+	/*
+	2. 예약 조회 기능
+통나무펜션 페이지를 활용해서 예약 조회 기능을 만드세요.
+이름과 전화번호를 입력 받고, 이를 통해서 예약 내역을 조회 하세요.
+조회가 될 경우 아래와 같이 얼럿창을 띄워서 예약 내역을 출력하세요.
+조회가 안될 경우 조회 결과가 없습니다를 얼럿창으로 띄우세요.
+예약 조회
+
+alert로 띄우기 
+이름:
+날짜:
+일수:
+인원:
+상태:
+	
+	*/
+	
+	
+	
+	
+	
+	 $("#checkBtn").on("click",function(){           
+         // let id = $("#idInput").val();
+         // let password = $("#passwordInput").val();
+         // let name = $("#nameInput").val();
+         // let phone = $("#phoneInput").val();
+         //  let date = $("#dateInput").val();
+
+
+
+
+
+
+
+         // name이 member인 input 태그 중에서 선택된 input태그 
+         //의 value 속성 가져오기 
+                             // $("input[name=type]:checked")
+         let member = $("input[name=member]:checked").val();
+
+         if(member == "memberBtn"){
+             let id = $("#idInput").val();
+             let password = $("#passwordInput").val();
+
+             
+                 // 회원일때 
+                 if(id == ""){
+                     alert("아이디를 입력하세요");
+                     return;
+                 }
+                 if(password == ""){
+                     alert("비밀번호를 입력하세요");
+                     return;
+                 }
+         }
+
+         if(member == "notMemberBtn") {
+             let name = $("#nameInput").val();
+             let phone = $("#phoneInput").val();
+             let date = $("#dateInput").val();
+         
+             //비회원일때
+             if(name == ""){
+                 alert("이름을 입력하세요");
+                 return;
+             }
+             if(phone == ""){
+                 alert("전화번호를 입력하세요");
+                 return;
+             }
+             if(!phone.startsWith("010")){
+                 alert("010 으로 시작하는 번호만 입력 가능합니다.");
+             }
+             if(date ==""){
+                 alert("예약일자를 선택하세요");
+                 return;
+             }
+             
+             // let num = $("#phoneInput").val();
+             // // console.log(num.substring(0,3));
+             // if(num.substring(0,3) !="010"){             
+             //     alert("010 으로 시작하는 번호만 입력 가능합니다.");
+             // }
+
+         }
+
+
+     });
+
+     $("input[name=member]").on("change",function(){
+
+         // alert("라디오 버튼 누름");
+         let select = $(this).val();
+         // alert(mem);
+         // let notMember = $("#notMemberBtn").val(); //val값 자체를 위에다 줬으면 필요없지 않나...? 
+         // let member = $("#memberBtn").val(); //엥.. .아니네..ㅠㅠ..ㅠ.줘야하는군...  
+         // 아니래~!!! value로 안적고 val로 적은거였음 ㅋ ㅋ.ㅋㅋ 바보 아녀? 
+
+
+             if(select == "notMemberBtn"){        // 비회원일때
+                 // $("#memberInput").show();
+                 // $("#notMemberInput").hide();    
+                 
+                 //d-none으로 줘보기
+                 $("#memberInput").addClass("d-none");
+                 $("#notMemberInput").removeClass("d-none");
+             } 
+             // else {
+             //     $("#notMemberInput").show();
+             //     $("#memberInput").hide();
+             // }
+             else{   //회원일때 
+                 $("#notMemberInput").addClass("d-none");
+                 $("#memberInput").removeClass("d-none");
+             }
+
+
+             // let id = $("#idInput").val();
+             // let name = $("#nameInput").val();
+             // let password = $("#passwordInput").val();
+             // //  let date = $("#dateInput").val();
+             // let phone = $("#phoneInput").val();
+
+
+             // if(id == ""){
+             //     alert("아이디를 입력하세요");
+             // }
+             // if(name == ""){
+             //     alert("이름을 입력하세요");
+             // }
+             // if(password == ""){
+             //     alert("비밀번호를 입력하세요");
+             // }
+             // if(phone == ""){
+             //     alert("전화번호를 입력하세요");
+             // }
+             
+
+
+
+         });
+	
+	
+/*4. setInterval
+가운데 이미지가 3초 마다 다른 이미지로 변경되도록 만드하세요.
+javascript 의 setInterval함수를 사용해서 구현하세요.
+이미지는 아래 이미지를 다운받아서 사용하세요.
+이미지는 순환하도록 구현하세요.
+
+어~~ 봐도 모르겠어~~  
+*/  
+
+            var imageList = [
+            	"/booking/banner1.jpg",
+            	"/booking/banner2.jpg",
+            	"/booking/banner3.jpg",
+            	"/booking/banner4.jpg"
+                ];
+            var currentIndex = 0;
+                //milli second 1초 = 1000
+
+            setInterval(function(){
+                    currentIndex++;
+
+                    if(currentIndex == imageList.length){
+                        currentIndex = 0;
+                    }
+                    $("#banner").attr("src",imageList[currentIndex]);
+                },3000 );
+                
+                // $("#nextBtn").on("click",function(){
+
+            // });
+
+ 
+ 
+});
+
+</script>
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+</body>
+</html>
