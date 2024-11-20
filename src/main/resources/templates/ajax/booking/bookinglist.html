@@ -62,8 +62,8 @@
 							<td th:case="확정" class="text-success">확정</td>
 							<td th:case="대기중" class="text-info">대기중</td>
 							<td th:case="*" class="text-warning"></td>
-						</th:block>
-						<td><button type="button" class="btn btn-danger btn-sm deleteBtn" th:data-booking-id>삭제</button></td>
+						</th:block>																		<!--  바보아냐...??  -->			
+						<td><button type="button" class="btn btn-danger btn-sm deleteBtn" th:data-booking-id="${booking.id}">삭제</button></td>
 					</tr>
 				</tbody>
 				
@@ -101,15 +101,17 @@
 		 // 유효성 검사
 		 //alert("클릭됨!");
 		 
+		 
 		 let id =  $(this).data("booking-id");
 		 
 		 $.ajax({
-			 type:get
+			 type:"get" // 자꾸 "" 빼먹네...
 			,url:"/ajax/booking/delete"
 			,data:{"id":id}
 			,success:function(response){
 				if(response.result == "success"){
-				alert("삭제 성공")
+				alert("삭제 성공");
+				//location.reload();
 				} else {
 					alert("삭제 실패");
 				}

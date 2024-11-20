@@ -43,7 +43,7 @@ public class BookingService {
 	}
 	
 	// 이름 전화번호 일치
-	
+/*	
 	public boolean sameBooking(String name ,String phoneNumber) {
 		
 		int count = bookingRepository.sameBooking(name, phoneNumber);
@@ -53,6 +53,14 @@ public class BookingService {
 		} else {
 			return false;
 		}
+	}
+*/	
+	
+	public List<Booking> sameBooking(String name ,String phoneNumber) {
+		
+		List<Booking> booking = bookingRepository.sameBooking(name, phoneNumber);
+		
+		return booking;
 		
 	}
 	

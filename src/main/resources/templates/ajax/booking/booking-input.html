@@ -98,7 +98,9 @@
 
      $("#dateInput").datepicker({
          dateFormat:"yy년 mm월 dd일",
-         minDate : 0
+         changeYear:true   // 년도 셀렉트 박스 
+         ,changeMonth:true
+         ,minDate : 0
      });
 	 
 	 $("#bookingBtn").on("click",function(){
@@ -110,9 +112,7 @@
 		 let phoneNumber = $("#phoneInput").val();
 		 
 		 
-			 alert(date);
 		 // 유효성 검사
-		 /*
 		 if(name == ""){
 			 alert("이름을 입력하세요");
 			 return;
@@ -134,7 +134,6 @@
 			 return;
 		 }
 		 
-		 */
 		 
 		 $.ajax({
 			 type:"post"

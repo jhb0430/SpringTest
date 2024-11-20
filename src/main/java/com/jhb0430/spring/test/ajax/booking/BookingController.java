@@ -101,13 +101,44 @@ public class BookingController {
 		return resultMap;
 	}
 	
+	
+	
+	
+	
 	@GetMapping("/home")
 	public String bookingHome() {
 		
 		return "ajax/booking/booking-home";
 	}
 	
-	// 이름 전화번호 조회해서 일치하는 거 -> 이거 ajax 중복 문제다 
+	// 이름 전화번호 조회해서 일치하는 거 -> 이거 ajax 중복 문제다  
+	 // 아니래
+	@ResponseBody
+	@GetMapping("/same-booking")
+	public Map<String, String> sameBooking (@RequestParam("name")String name
+											, @RequestParam("phoneNumber") String phoneNumber
+											, Model model){
+		
+		List<Booking> booking = bookingService.sameBooking(name, phoneNumber);
+		
+		
+		model.addAttribute("booking", booking);
+		
+		// 조회되면 {"result": success}
+		
+		Map<String,String> resultMap = new HashMap<>();
+		
+		if(booking != null) {
+			resultMap.put("result", "success");
+		} else {
+			resultMap.put("result", "fail");
+			
+		}
+		return resultMap;
+		
+	}
+	
+	
 	/*
 	@ResponseBody
 	@GetMapping("/same-booking")

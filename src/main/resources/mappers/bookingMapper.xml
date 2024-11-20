@@ -37,7 +37,7 @@
 	INSERT INTO
 			`booking`
 		(
-	 		,`name`
+	 		`name`
 		 	,`date`
 		 	,`day`
 	 		,`headcount`
@@ -54,9 +54,36 @@
  
  </insert>
  
+ <!-- 
+	2. 예약 조회 기능
+통나무펜션 페이지를 활용해서 예약 조회 기능을 만드세요.
+이름과 전화번호를 입력 받고, 이를 통해서 예약 내역을 조회 하세요.
+조회가 될 경우 아래와 같이 얼럿창을 띄워서 예약 내역을 출력하세요.
+조회가 안될 경우 조회 결과가 없습니다를 얼럿창으로 띄우세요.
+예약 조회
+ 
  <select id="sameBooking" parameterType="string" resultType="int">
  	SELECT
  			count(*)
+ 		FROM
+ 			`booking`
+ 		WHERE
+ 			`name` = #{name}
+ 		AND	
+ 			`phoneNumber` = #{phoneNumber};
+ 	
+ 
+ </select>
+  -->
+ <select id="sameBooking" parameterType="String">
+ 	SELECT
+ 		`id`
+ 		,`name`
+ 		,`headcount`
+	 	,`day`
+	 	,`date`
+	 	,`phoneNumber`
+	 	,`state`
  		FROM
  			`booking`
  		WHERE
