@@ -14,8 +14,8 @@
 	 	,`phoneNumber`
 	 	,`state`
 	 FROM
-	 	`booking`;	
- 
+	 	`booking`	
+ 	ORDER BY `date`;
  
  </select>
  
@@ -75,10 +75,12 @@
  
  </select>
   -->
- <select id="sameBooking" parameterType="String">
+ <select id="sameBooking" 
+ parameterType="map"
+resultType="com.jhb0430.spring.test.ajax.booking.Booking"
+ >
  	SELECT
- 		`id`
- 		,`name`
+ 		`name`
  		,`headcount`
 	 	,`day`
 	 	,`date`

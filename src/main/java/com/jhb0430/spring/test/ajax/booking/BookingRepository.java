@@ -25,6 +25,7 @@ public interface BookingRepository {
 //			, @Param("phoneNumber") String phoneNumber);
 	
 	
-	public List<Booking> sameBooking(@Param("name") String name
+	public Booking sameBooking(
+			@Param("name") String name
 			, @Param("phoneNumber") String phoneNumber);
 }

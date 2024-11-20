@@ -43,8 +43,8 @@
                     <div class="d-flex justify-content-center align-items-center text-white">  <!-- 하위요소의 글씨가 다 흰색이니까 가장 큰 틀에다 흰글씨 속성 주기-->
             
                         <div class="box col-4  d-flex align-items-center justify-content-center"> 
-                            <div class=" display-4">실시간 <br>
-                                예약하기</div>
+                            <a href="/ajax/booking/input" class="text-white" id="reserv"><div class=" display-4">실시간 <br>
+                                예약하기</div></a>
                         </div>
                         <div class="boxInfo col-5" > <!-- 중간 틀-->
                             <div class="pt-4 pl-2 pr-4"> <!--예약확인 마진/패딩 주려고 만들어둔 div-->
@@ -58,7 +58,7 @@
 						                                    </div>
 						                                     --> 
                                 </div>
-                                   <div class="d-flex mt-2">
+                                   <div class="d-flex mt-4">
                                        <label class="col-3 align-items-center text-right">이름 : </label><input type="text" class="form-control col-9" id="nameInput">
                                    </div>
                                    <div class="d-flex mt-4">
@@ -156,17 +156,16 @@ alert로 띄우기
 	 $("#checkBtn").on("click",function(){           
          
         let name = $("#nameInput").val();
-    	let phone = $("#phoneInput").val();
-    	let data = $("#data")
+    	let phoneNumber = $("#phoneInput").val();
        
 
-    	alert(name);
+    	//alert(name);
     	
              if(name == ""){
                  alert("이름을 입력하세요");
                  return;
              }
-             if(phone == ""){
+             if(phoneNumber == ""){
                  alert("전화번호를 입력하세요");
                  return;
              }
@@ -175,18 +174,61 @@ alert로 띄우기
              
             $.ajax({
             	type:"get"
-            	,url:"/ajax/booking/same-booking"
-            	,data:{"name":name,"date":date,"day":day,"headcount":headcount,"phoneNumber":phoneNumber,"state":state}
-            	,success:function(response){
-            		alert(	"이름: " + name
-            				+"날짜: " + data (yyyy년 m월 d일로 떠야됨)
-            				+"일수: " + day
-            				+"인원: " + headcount
-            				+"상태: " + state
+            	,url:"/ajax/booking/same-booking" // 아 굳이 map일 필요가 없네??
+            	,data:{"name":name,"phoneNumber":phoneNumber}
+            	// 이름과 전화번호만 전달 받으면 된다	
+            ,success:function(response){
+            	// 조회 성공 {"result":"success", "item" : {}} 으로 ㅓㅅㄹ정 가능
+        		// 조회 실패 {"result":"fail"}
+            	if(response.result == "success"){
             				
-            		)
+	            		alert(
+	            				"이름: " + response.item.name 
+	            				+"\n날짜: " + response.item.date
+	            				+"\n일수: " + response.item.day
+	            				+"\n인원: " + response.item.headcount
+	            				+"\n상태: " + response.item.state
+	            				)
+	            	} else {
+	            		alert("조회 결과가 없습니다");
+	            	}
+            	/*
+            $.ajax({
+            	type:"get"
+            	,url:"/ajax/booking/same-booking" // 아 굳이 map일 필요가 없네??
+            	,data:{"name":name,"phoneNumber":phoneNumber}
+            	// 이름과 전화번호만 전달 받으면 된다	
+            ,success:function(response){
+            		//console.log("성공");
+            	if(response == ""){
+	            		alert("조회 결과가 없습니다");
+            		
+	            	} else {
+	            		alert(
+	            				"이름: " + response.name 
+	            				+"\n날짜: " + response.date
+	            				+"\n일수: " + response.day
+	            				+"\n인원: " + response.headcount
+	            				+"\n상태: " + response.state
+	            				)
+	            	}
+            	if(response != null){
+            		//alert(response.date)
+            		alert(
+            				"이름: " + response.name 
+            				+"\n날짜: " + response.date
+            				+"\n일수: " + response.day
+            				+"\n인원: " + response.headcount
+            				+"\n상태: " + response.state
+            				)
+	            	} else {
+	            		alert("조회 결과가 없습니다");
+	            	}
+            	*/
             	}
-            	,error:function(){}
+            	,error:function(){
+            		alert("오류");
+            	}
             	
             	
             	

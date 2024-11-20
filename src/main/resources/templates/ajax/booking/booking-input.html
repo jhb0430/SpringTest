@@ -136,12 +136,13 @@
 		 
 		 
 		 $.ajax({
-			 type:"post"
+			 type:"get"
 			 ,url:"/ajax/booking/create"
 			 ,data:{"name":name,"date":date,"day":day,"headcount":headcount,"phoneNumber":phoneNumber}
 			 ,success:function(response){
 				 if(response.result == "success"){
-					 alert("예약 완료");
+					 //alert("예약 완료");
+					 location.href="/ajax/booking/list"
 				 } else {
 					 alert("예약 실패");
 				 }

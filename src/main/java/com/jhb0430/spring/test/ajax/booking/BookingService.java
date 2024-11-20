@@ -56,9 +56,9 @@ public class BookingService {
 	}
 */	
 	
-	public List<Booking> sameBooking(String name ,String phoneNumber) {
+	public Booking sameBooking(String name ,String phoneNumber) {
 		
-		List<Booking> booking = bookingRepository.sameBooking(name, phoneNumber);
+		Booking booking = bookingRepository.sameBooking(name, phoneNumber);
 		
 		return booking;
 		

@@ -61,7 +61,8 @@
 						<!--  대기중이면 info 확정이면 success 그 외는 warning으로 가죠  -->
 							<td th:case="확정" class="text-success">확정</td>
 							<td th:case="대기중" class="text-info">대기중</td>
-							<td th:case="*" class="text-warning"></td>
+							<td th:case="취소" class="text-danger">취소</td>
+							<td th:case="*" class="text-warning" th:text="${booking.state}">취소</td>
 						</th:block>																		<!--  바보아냐...??  -->			
 						<td><button type="button" class="btn btn-danger btn-sm deleteBtn" th:data-booking-id="${booking.id}">삭제</button></td>
 					</tr>

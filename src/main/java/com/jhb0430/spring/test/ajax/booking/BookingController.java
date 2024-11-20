@@ -46,10 +46,21 @@ public class BookingController {
 		return "ajax/booking/booking-input";
 	}
 	
+
+	// 육하원칙에 맞게 작성 하는게 몾다
+	// 언제 : 사용자가 예약 정보를 입력하고 젖아을 수행하고자 할때
+	// 어디서 : 서버
+	// input(request) : 예약이 필요한 예약자 정보
+	// 기능 : 
+	// 무엇을 : 예약 정보를 저장한다
+	// 어떻게 : 예약 정보를 booking 테이블에 insert 한다
+	// 왜 : 테이블에 저장해야 나중에 예약 목록을 얻어올 수 있으니까
+	// output(response) : 성공 실패 여부를 json 문자열로 만든다
+	
 	
 	// create
 	@ResponseBody
-	@PostMapping("/create")
+	@GetMapping("/create") // 보안적으로 문제되거나 긴 데이터일때는 post 나머지는 다 겟...
 	public Map<String,String> createBooking(
 						@RequestParam("name") String name
 						,@DateTimeFormat(pattern="yyyy년 M월 d일") // 묶어주깅 
@@ -111,21 +122,135 @@ public class BookingController {
 		return "ajax/booking/booking-home";
 	}
 	
-	// 이름 전화번호 조회해서 일치하는 거 -> 이거 ajax 중복 문제다  
-	 // 아니래
+	
+	
+	
+	
+	
+	
+	//  풀이
+	
+	//언제 : 사용자가 이름과 전화번호를 입력하고 조회를 요청했을때
+	// 어디서 : 서버에서
+	// input: 예약자 이름, 전화 번호
+	// 기능 : 
+	// 무엇을 : 이름과 전화번호가 일치하는 사용자 정보 조회
+	// 어떻게 :booking 테이블에 이름과 전화번호를 조건으로 일치하는 행 조회
+	// 왜 : 예약자의 모든 정보가 필요하니까 
+	// output : 예약자 정보
+	/*
+	 * @GetMapping("/info)
+	 *  public  Booking bookingInfo(
+	 * 				 @RequestParam("name")String name
+					, @RequestParam("phoneNumber") String phoneNumber
+	 *  		){
+	 *  
+	 *  Booking booking = bookingService.sameBooking(name,phoneNumber);
+	 *  // bookingService.sameBooking 와 일치하는 예약 정보를 얻어온다 .
+	 *  
+	 *  // response에 데이터를 담아야한다.
+	 *  
+	 *  
+	 *  //{"name":어쩌구,"date":yyyy-mm-dd,......} 
+	 *  
+	 *  
+	 *  }
+	 * 
+	 * 
+	 * */
+	
+	
+	//이름과 전화번호가 같으면 그 쿼리를 조회해서 출력해준다.
+	// 이름을 넣고 전화번호를 넣으면
+	// 나머지 값이 출력되어야 한다.
 	@ResponseBody
 	@GetMapping("/same-booking")
-	public Map<String, String> sameBooking (@RequestParam("name")String name
+	public Map<String, Object>  sameBooking (
+//			public Booking sameBooking (
+											@RequestParam("name")String name
 											, @RequestParam("phoneNumber") String phoneNumber
-											, Model model){
+			){
 		
-		List<Booking> booking = bookingService.sameBooking(name, phoneNumber);
+		Booking sameBooking = bookingService.sameBooking(name, phoneNumber);
+		// bookingService.sameBooking 와 일치하는 예약 정보를 얻어온다 .
+		//{"id":0,"name":"장나라","headcount":2,"day":1,"date":"2025-09-12","phoneNumber":"010-2222-0000","state":"확정","createdAt":null,"updatedAt":null}
+	
+		
+		// 조회가 됐는지 안됐는지 표현해주면 좋을 것 같다
+		// 조회 성공 {"result":"success", "item" : {}} 으로 ㅓㅅㄹ정 가능
+		// success 인 경우에만 ! item이라는 키로 값을 가져오면 되지 않나? 
+		// 
+		// 조회 실패 {"result":"fail"}
+		
+//		return sameBooking;
+		
+		Map<String, Object> resultMap = new HashMap<>();
+		// 성공 실패 여부에 따라 구분
+		if(sameBooking != null) {
+			resultMap.put("result","success");
+			resultMap.put("item",sameBooking);
+			
+		}else {
+			resultMap.put("result","fail");
+			
+		}
+		return resultMap;
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/*		 실패의 흔적...
+	 * 
+	 * //											@RequestParam("name") String name
+//											,@DateTimeFormat(pattern="yyyy년 M월 d일") 
+//											@RequestParam("date") LocalDate date
+//										, @RequestParam("day") int day
+//										, @RequestParam("headcount") int headcount
+//										, @RequestParam("phoneNumber") String phoneNumber
+//
+	 */
+//		Booking booking = new Booking();
+//		booking.setName(name);
+//		booking.setDate(date);
+//		booking.setDay(day);
+//		booking.setHeadcount(headcount);
+//		booking.setPhoneNumber(phoneNumber);
 		
 		
-		model.addAttribute("booking", booking);
+//		model.addAttribute("booking", booking);
 		
+//		Map<String,Object> bookingMap = new HashMap<>();
+//		
+//		if(sameBooking != null) {
+//		
+//		{"name":어쩌구,"date":yyyy-mm-dd,......} 
+//		bookingMap.put("name", name);
+//		bookingMap.put("date", date);
+//		bookingMap.put("day", day);
+//		bookingMap.put("headcount", headcount);
+//		bookingMap.put("phoneNumber", phoneNumber);
+		
+//		bookingMap.put("result","success");
+//		}else {
+//			bookingMap.put("result","fail");
+//			
+//		}
+//		return bookingMap;
+//	}
+//		
+		
+		/*
 		// 조회되면 {"result": success}
-		
 		Map<String,String> resultMap = new HashMap<>();
 		
 		if(booking != null) {
@@ -136,7 +261,6 @@ public class BookingController {
 		}
 		return resultMap;
 		
-	}
 	
 	
 	/*
