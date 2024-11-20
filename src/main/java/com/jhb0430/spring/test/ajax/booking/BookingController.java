@@ -163,6 +163,15 @@ public class BookingController {
 	//이름과 전화번호가 같으면 그 쿼리를 조회해서 출력해준다.
 	// 이름을 넣고 전화번호를 넣으면
 	// 나머지 값이 출력되어야 한다.
+	
+		//언제 : 사용자가 이름과 전화번호를 입력하고 조회를 요청했을때
+		// 어디서 : 서버에서
+		// input: 예약자 이름, 전화 번호
+		// 기능 : 
+		// 무엇을 : 이름과 전화번호가 일치하는 사용자 정보 조회
+		// 어떻게 :booking 테이블에 이름과 전화번호를 조건으로 일치하는 행 조회
+		// 왜 : 예약자의 모든 정보가 필요하니까 
+		// output : 예약자 정보
 	@ResponseBody
 	@GetMapping("/same-booking")
 	public Map<String, Object>  sameBooking (
@@ -171,13 +180,14 @@ public class BookingController {
 											, @RequestParam("phoneNumber") String phoneNumber
 			){
 		
+		 //{"name":어쩌구,"date":yyyy-mm-dd,......} 
 		Booking sameBooking = bookingService.sameBooking(name, phoneNumber);
 		// bookingService.sameBooking 와 일치하는 예약 정보를 얻어온다 .
 		//{"id":0,"name":"장나라","headcount":2,"day":1,"date":"2025-09-12","phoneNumber":"010-2222-0000","state":"확정","createdAt":null,"updatedAt":null}
-	
+		// response에 데이터를 담아야한다.
 		
 		// 조회가 됐는지 안됐는지 표현해주면 좋을 것 같다
-		// 조회 성공 {"result":"success", "item" : {}} 으로 ㅓㅅㄹ정 가능
+		// 조회 성공 {"result":"success", "item" : {}} 으로 설정 가능
 		// success 인 경우에만 ! item이라는 키로 값을 가져오면 되지 않나? 
 		// 
 		// 조회 실패 {"result":"fail"}
