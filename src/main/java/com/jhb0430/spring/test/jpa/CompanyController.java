@@ -1,6 +1,9 @@
 package com.jhb0430.spring.test.jpa;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,14 +40,18 @@ public class CompanyController {
 	
 	@ResponseBody
 	@GetMapping("/create")
-	public Company createCompany() {
+	public List<Company> createCompany() {
 		// create 요청이 들어오면... 
 		
-		Company company = companyService.addCompany("넥슨", "컨텐츠 게임", "대기업", 3585);
-				company = companyService.addCompany("버블팡","여신 금융업","대기업",6834);
+		List<Company> companyList = new ArrayList<>();
 		
+		Company company1 = companyService.addCompany("넥슨", "컨텐츠 게임", "대기업", 3585);
+		Company company2 = companyService.addCompany("버블팡","여신 금융업","대기업",6834);
 		
-		return company;
+		companyList.add(company1);
+		companyList.add(company2);
+		
+		return companyList;
 		
 	}
 	
@@ -56,7 +63,7 @@ public class CompanyController {
 	@GetMapping("/update")
 	public Company updateCompany() {
 		
-		Company company = companyService.updateCompany(8, "중소기업", 34);
+		Company company = companyService.updateCompany(10, "중소기업", 34);
 		
 		return company;
 	}
@@ -66,10 +73,11 @@ public class CompanyController {
 //	해당 회사 정보를 테이블에서 삭제하세요. (버블팡의 pk id번호로 업데이트 - workbench에서 조회)
 //	아래와 같이 출력하세요.
 	
+	@ResponseBody
 	@GetMapping("/delete")
 	public String deleteCompany() {
 		
-		companyService.deleteCompany(8);
+		companyService.deleteCompany(10);
 		
 		return "수행 완료";
 		
