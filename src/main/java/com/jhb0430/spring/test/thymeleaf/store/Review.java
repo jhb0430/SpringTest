@@ -21,8 +21,8 @@ public class Review {
 	private String userName;
 	private double point;
 	private String review;
-	private LocalDate createdAt;
-	private LocalDate updateAt;
+	private LocalDateTime createdAt;
+	private LocalDateTime updateAt;
 	
 	
 	public int getId() {
@@ -61,16 +61,16 @@ public class Review {
 	public void setReview(String review) {
 		this.review = review;
 	}
-	public LocalDate getCreatedAt() {
+	public LocalDateTime getCreatedAt() {
 		return createdAt;
 	}
-	public void setCreatedAt(LocalDate createdAt) {
+	public void setCreatedAt(LocalDateTime createdAt) {
 		this.createdAt = createdAt;
 	}
-	public LocalDate getUpdateAt() {
+	public LocalDateTime getUpdateAt() {
 		return updateAt;
 	}
-	public void setUpdateAt(LocalDate updateAt) {
+	public void setUpdateAt(LocalDateTime updateAt) {
 		this.updateAt = updateAt;
 	}
 	
