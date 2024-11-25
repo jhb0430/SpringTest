@@ -12,6 +12,7 @@
  			,`userName`
  			,`point`
  			,`review`
+ 			,`createdAt`
  		FROM
  			`new_review`
  		ORDER BY 
