@@ -22,7 +22,8 @@ public class RecruitController {
 	private RecruitRepository recruitRepository;
 	
 	@ResponseBody
-	@GetMapping("/find")
+//	@GetMapping("/find")
+	@GetMapping("/1")
 	public Optional<Recruit> selectRecruit() {
 //		List<Recruit> recruitList = null;
 		
@@ -34,7 +35,8 @@ public class RecruitController {
 	}
 	
 	@ResponseBody
-	@GetMapping("/findCompany")
+//	@GetMapping("/findCompany")
+	@GetMapping("/2")
 	public List<Recruit> findCompanyId(){
 		
 //		List<Recruit> recruitList = recruitRepository.findByCompanyId(1);
@@ -45,7 +47,8 @@ public class RecruitController {
 	
 	
 	@ResponseBody
-	@GetMapping("/findPT")
+//	@GetMapping("/findPT")
+	@GetMapping("/3")
 	public List<Recruit> findPositionType(){
 		
 		List<Recruit> recruitList = recruitRepository.findByPositionAndType("웹 back-end 개발자","정규직");
@@ -55,7 +58,8 @@ public class RecruitController {
 	 
 	//4. 복합 조건 조회
 	@ResponseBody
-	@GetMapping("/findTandS")
+//	@GetMapping("/findTandS")
+	@GetMapping("/4")
 	public List<Recruit> findTypeandSalary(){
 		
 		List<Recruit> recruitList = recruitRepository.findByTypeOrSalaryGreaterThanEqual("정규직",9000);
@@ -64,7 +68,8 @@ public class RecruitController {
 	}
 	
 	@ResponseBody
-	@GetMapping("/findsalary")
+//	@GetMapping("/findsalary")
+	@GetMapping("/5")
 	public List<Recruit> findSalaryTop(){
 		
 List<Recruit> recruitList = recruitRepository.findTop3ByTypeOrderBySalaryDesc("계약직");
@@ -74,7 +79,8 @@ List<Recruit> recruitList = recruitRepository.findTop3ByTypeOrderBySalaryDesc("�
 	}
 	
 	@ResponseBody
-	@GetMapping("/find-region")
+//	@GetMapping("/find-region")
+	@GetMapping("/6")
 	public List<Recruit> findRegion(){
 		
 		List<Recruit> recruitList = recruitRepository.findByRegionAndSalaryBetween("성남시 분당구",7000,8500);
@@ -83,11 +89,13 @@ List<Recruit> recruitList = recruitRepository.findTop3ByTypeOrderBySalaryDesc("�
 		
 	}
 	@ResponseBody
-	@GetMapping("/find-native")
+//	@GetMapping("/find-native")
+	@GetMapping("/7")
 	// LocalDate 로도 되는지 해보기 
 	public List<Recruit> findNativeQuery(){
 		
 		List<Recruit> recruitList = recruitRepository.selectByDST("2026-04-10",8100,"정규직");
+//		List<Recruit> recruitList = recruitRepository.selectByDST(LocalDate.of(2026, 4, 10),8100,"정규직");
 		
 		return recruitList;
 		
