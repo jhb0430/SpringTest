@@ -19,8 +19,17 @@
 					<h3 class="display-4 mt-2">가게이름- 리뷰</h3>
 						<div class="border border-info rounded mt-3 p-3" th:each="review:${review}"> <!--  id 값이 입력된 review 보여주게됨 -->
 					<!-- 
-					<div class="dispaly-4 font-weight-bold th:if="${review.review} == null> 작성된 리뷰가 없습니다 </div> 
-					-->
+					<div class="dispaly-4 font-weight-bold" th:if="${review.review} == null> 작성된 리뷰가 없습니다 </div> 
+					<th:block  th:if="${review.storeId =='' }">
+							<div class="dispaly-2 font-weight-bold" > 작성된 리뷰가 없습니다 </div> 
+					</th:block>
+					review가 아니라 review에 storeId 가 없으면
+					
+					-->		
+					
+<!-- 
+						<th:block  th:if="${review.review != null}">
+ -->							
 							<div class="d-flex align-items-center">
 								<h5 class="font-weight-bold mr-2" th:text="${review.userName}">이정재</h5>
 								<!--
@@ -63,7 +72,9 @@
 							<h5 class="mt-2" th:text="${review.review}">고기가 덜익어서 왔어요!!! </h5>
 							<div class="badge" th:text="${review.menu}">목살 고기만</div>
 						</div>
-						
+<!-- 
+					</th:block>
+ -->						
 				
 				</section>
 				<footer>
