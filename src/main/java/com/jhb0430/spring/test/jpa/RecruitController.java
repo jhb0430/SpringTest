@@ -52,7 +52,7 @@ public class RecruitController {
 		
 		return recruitList;
 	}
-	
+	 
 	//4. 복합 조건 조회
 	@ResponseBody
 	@GetMapping("/findTandS")
