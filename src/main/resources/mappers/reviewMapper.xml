@@ -7,7 +7,7 @@
  	<select id="selectReview" parameterType="com.jhb0430.spring.test.thymeleaf.store.Review">
  	
  		SELECT
- 			`StoreId`
+ 			`storeId`
  			,`menu`
  			,`userName`
  			,`point`
@@ -15,6 +15,8 @@
  			,`createdAt`
  		FROM
  			`new_review`
+ 		WHERE 
+ 			`storeId`=#{storeId}
  		ORDER BY 
  			`createdAt`;		
  	
@@ -22,16 +24,25 @@
  	</select>
  	
  	<!-- 
- 	1. join까지는 활용할 필요는 없고요. 특정 가계의 정보를 조회 하는 페이지이기 떄문에
+ 	1. join까지는 활용할 필요는 없고요. 특정 가게의 정보를 조회 하는 페이지이기 떄문에
 특정 가게의 행만 조회하는 조건을 만들어 낼 수 있다면 그것으로 충분해요. 
 특정 가게의 리뷰만 조회하는 쿼리를 한번 작성해보세요. 
 순수하게 리뷰테이블만으로 조회 가능하니까요. 그걸 위해서 어떤 데이터가 필요한지 고민해보는 문제예요. 
 고급 문제 수준으로 고민이 필요한 부분이라. 천천히 한번 고민해봐요!!
- 	SELECT `StoreId`
+ 	SELECT `review`
+ 	FROM `new_review`
+ 	WHERE `storeId`=${storeId};
+ 
+ <select id="selectStoreId" parameterType="com.jhb0430.spring.test.thymeleaf.store.Review">
+ 
+ 	SELECT `review`
+ 	FROM `new_review`
+ 	WHERE `storeId`=#{storeId};
+ 
+ 
+ </select>
+ 
  	 -->
- 
- 
- 
  
  
  </mapper>

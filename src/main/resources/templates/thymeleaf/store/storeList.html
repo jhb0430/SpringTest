@@ -17,7 +17,8 @@
 					
 					<h3 class="display-4 mt-2">우리동네 가게</h3>
 						<div class="border border-info rounded mt-3 p-3" th:each="store : ${store}">
-							<a href="#" class="text-dark"><h4 th:text="${store.name}">어쩌구치킨</h4></a>
+							<a th:href="@{/store/review(storeId=${store.id})}" class="text-dark"><h4 th:text="${store.name}">어쩌구치킨</h4></a>
+							<!-- href="/store/review?id="${store.id}"" -->
 							<div th:text="|전화번호 : ${store.phoneNumber}|">전화번호 : 000-000-0000</div>
 							<div th:text ="|주소 : ${store.address}|">주소 : 서울시 서초구</div>
 						</div>

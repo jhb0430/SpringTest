@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.jhb0430.spring.test.database.domain.Store;
 import com.jhb0430.spring.test.database.service.StoreService;
@@ -36,9 +37,11 @@ public class StoreListController {
 	}
 	
 	@GetMapping("/review")
-	public String reviewList(Model model) {
+	public String reviewList(@RequestParam("storeId") int storeId 
+								,Model model) {
 		
-		List<Review> review = reviewService.getReview();
+		List<Review> review = reviewService.getReview(storeId);
+//		List<Review> review = reviewService.getReview();
 		
 		model.addAttribute("review", review);
 		

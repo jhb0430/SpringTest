@@ -17,8 +17,10 @@
 					<!--  mapper에서 처리해야함... requestParameter -->
 					<!--  th:if="${review.StoreId == store.id}" th:text="|${store.name} - 리뷰|" -->
 					<h3 class="display-4 mt-2">가게이름- 리뷰</h3>
-						<div class="border border-info rounded mt-3 p-3" th:each="review:${review}">
-					<!-- <div class="dispaly-4 font-weight-bold th:if="${review.review} == null> 작성된 리뷰가 없습니다 </div> -->
+						<div class="border border-info rounded mt-3 p-3" th:each="review:${review}"> <!--  id 값이 입력된 review 보여주게됨 -->
+					<!-- 
+					<div class="dispaly-4 font-weight-bold th:if="${review.review} == null> 작성된 리뷰가 없습니다 </div> 
+					-->
 							<div class="d-flex align-items-center">
 								<h5 class="font-weight-bold mr-2" th:text="${review.userName}">이정재</h5>
 								<!--

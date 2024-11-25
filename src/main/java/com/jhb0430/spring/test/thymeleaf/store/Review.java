@@ -16,7 +16,7 @@ public class Review {
 //	
 	
 	private int id;
-	private int StoreId;
+	private int storeId;
 	private String menu;
 	private String userName;
 	private double point;
@@ -31,11 +31,12 @@ public class Review {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
 	public int getStoreId() {
-		return StoreId;
+		return storeId;
 	}
 	public void setStoreId(int storeId) {
-		StoreId = storeId;
+		this.storeId = storeId;
 	}
 	public String getMenu() {
 		return menu;

@@ -11,9 +11,11 @@ public class ReviewService {
 	@Autowired
 	private ReviewRepository reviewRepository;
 	
-	public List<Review> getReview(){
+	public List<Review> getReview(int storeId){
+//		public List<Review> getReview(){
 		
-		List<Review> review = reviewRepository.selectReview();
+		List<Review> review = reviewRepository.selectReview(storeId);
+//		List<Review> review = reviewRepository.selectReview();
 		
 		return review;
 	}
